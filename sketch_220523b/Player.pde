@@ -15,4 +15,8 @@ public class Player {
       x++;
     }
   }
+  
+  public void display() {
+    circle(x, y, 10); //placeholder
+  }
 }
