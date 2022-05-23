@@ -1,18 +1,19 @@
 public class Player {
   float x, y;
+  float speed = 5;
   
   public void move() {
     if (keysPressed[UP]) {
-      y--;
+      y -= speed;
     }
     if (keysPressed[DOWN]) {
-      y++;
+      y += speed;
     }
     if (keysPressed[LEFT]) {
-      x--;
+      x -= speed;
     }
     if (keysPressed[RIGHT]) {
-      x++;
+      x += speed;
     }
   }
   

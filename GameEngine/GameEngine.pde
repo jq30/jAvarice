@@ -1,14 +1,23 @@
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
+GameState state = GameState.PLAY;
+
+enum GameState {
+  MENU, PLAY, PAUSED, DIALOGUE, OVER
+}
 
 void setup() {
   size(600, 600);
 }
 
 void draw() {
-  background(255);
-  player.display();
-  player.move();
+  switch (state) {
+    case PLAY:
+      background(255);
+      player.display();
+      player.move();
+      break;
+  }
 }
 
 void keyPressed() {
