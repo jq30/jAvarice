@@ -22,3 +22,9 @@ public class Bullet {
     circle(x, y, 10);
   }
 }
+
+class AngledBullet extends Bullet {
+  public AngledBullet(float x, float y, float speed, float angle) {
+    super(x, y, speed * (float)Math.cos(angle), speed * (float)Math.sin(angle));
+  }
+}
