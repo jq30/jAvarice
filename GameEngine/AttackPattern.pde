@@ -1,15 +1,14 @@
 public abstract class AttackPattern {
   float x, y; //point of origin of attack
-  Bullet[] bullets; //bullets to be spawned
+  boolean finished;
   
   public AttackPattern(float x, float y) {
     this.x = x;
     this.y = y;
+    finished = false;
   }
-  
-  Bullet[] getBullets() {
-    return bullets;
-  }
+
+  public abstract Bullet[] getBullets();
 }
 
 class SingleAimedBullet extends AttackPattern {
@@ -17,7 +16,12 @@ class SingleAimedBullet extends AttackPattern {
     super(x, y);
   }
   
-  Bullet[] bullets = {
-    new Bullet(x, y, player.x, player.y, 1)
-  };
+  public Bullet[] getBullets() {
+    Bullet[] B = {
+      new Bullet(x, y, player.x, player.y, 3)
+    };
+    
+    finished = true;
+    return B;
+  }
 }
