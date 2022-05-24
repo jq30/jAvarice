@@ -8,7 +8,7 @@ public class Bullet {
     this.y = y;
     this.xVel = xVel;
     this.yVel = yVel;
-    radius = 10;
+    radius = 5f;
   }
   
   public Bullet(float x, float y, float targetX, float targetY, float speed) {
@@ -21,7 +21,7 @@ public class Bullet {
   }
   
   public void display() {
-    circle(x, y, radius);
+    circle(x, y, radius * 2);
   }
   
   public boolean hit() {
