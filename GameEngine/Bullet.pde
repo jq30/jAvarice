@@ -1,4 +1,5 @@
 public class Bullet {  
+  float radius;
   float x, y;
   float xVel, yVel;
   
@@ -7,6 +8,7 @@ public class Bullet {
     this.y = y;
     this.xVel = xVel;
     this.yVel = yVel;
+    radius = 10;
   }
   
   public Bullet(float x, float y, float targetX, float targetY, float speed) {
@@ -19,7 +21,12 @@ public class Bullet {
   }
   
   public void display() {
-    circle(x, y, 10);
+    circle(x, y, radius);
+  }
+  
+  public boolean hit() {
+    println("HIT!");
+    return dist(player.x, player.y, x, y) < (Player.hitboxRadius + radius);
   }
 }
 

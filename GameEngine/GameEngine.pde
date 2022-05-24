@@ -20,6 +20,9 @@ void draw() {
       player.move();
       
       for (Bullet b : currentBullets) {
+        if (b.hit()) {
+          background(0);
+        }
         b.display();
       }
       
@@ -54,4 +57,8 @@ void mousePressed() {
 
 void clearAllBullets() {
   currentBullets = new LinkedList<Bullet>();
+}
+
+void triggerHit() {
+  println("HIT!"); //do something please
 }
