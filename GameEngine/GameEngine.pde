@@ -20,7 +20,6 @@ void draw() {
       player.move();
       
       for (Bullet b : currentBullets) {
-        b.move();
         b.display();
       }
       
