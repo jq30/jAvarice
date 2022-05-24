@@ -21,6 +21,8 @@ public abstract class AttackSequence {
   }
 }
 
+/////
+
 public class SequenceA extends AttackSequence {
   public SequenceA(float x, float y) {
     AttackPattern[] patterns = {
@@ -37,5 +39,11 @@ public class SequenceA extends AttackSequence {
     for (AttackPattern p : patterns) {
       attacks.add(p);
     }
+  }
+}
+
+public class SequenceB extends AttackSequence {
+  public SequenceB(float x, float y) {
+    attacks.add(new SpinnyThing(x, y));
   }
 }

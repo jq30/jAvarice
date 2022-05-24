@@ -10,10 +10,20 @@ public abstract class AttackPattern {
     currentBullets = new LinkedList<Bullet>();
   }
 
+  public boolean ready() {
+    return true;
+  }
+
+  public void update() {
+    for (Bullet b : currentBullets) {
+      b.move();
+    }
+  }
+
   public abstract Bullet[] getBullets();
-  public abstract boolean ready();
-  public abstract void update();
 }
+
+//////
 
 class SingleAimedBullet extends AttackPattern {
   public SingleAimedBullet(float x, float y) {
@@ -31,14 +41,32 @@ class SingleAimedBullet extends AttackPattern {
     }
     return B;
   }
+}
+
+class SpinnyThing extends AttackPattern {
+  int i;
   
-  public boolean ready() {
-    return true;
+  public SpinnyThing(float x, float y) {
+    super(x, y);
+    i = 0;
   }
   
-  public void update() {
-    for (Bullet b : currentBullets) {
-      b.move();
+  public Bullet[] getBullets() {
+    i++;
+    Bullet[] B = {
+      new AngledBullet(x, y, 3, 60 + i),
+      new AngledBullet(x, y, 3, 120 + i),
+      new AngledBullet(x, y, 3, 180 + i),
+      new AngledBullet(x, y, 3, 240 + i),
+      new AngledBullet(x, y, 3, 300 + i),
+      new AngledBullet(x, y, 3, 360 + i)
+    };
+    if (i == 60) {
+      finished = true;
     }
+    for (Bullet b : B) {
+      currentBullets.add(b);
+    }
+    return B;
   }
 }

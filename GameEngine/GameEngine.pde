@@ -2,7 +2,7 @@ boolean[] keysPressed = new boolean[128];
 Player player = new Player();
 GameState state = GameState.PLAY;
 List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
-AttackSequence currentSequence = new SequenceA(300, 300);
+AttackSequence currentSequence = new SequenceB(300, 300);
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -45,5 +45,13 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  currentSequence = new SequenceA(mouseX, mouseY);
+  clearAllBullets();
+  currentSequence = new SequenceB(mouseX, mouseY);
+  for (Bullet B : currentBullets) {
+    println(B.xVel);
+  }
+}
+
+void clearAllBullets() {
+  currentBullets = new LinkedList<Bullet>();
 }
