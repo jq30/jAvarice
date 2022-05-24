@@ -1,13 +1,6 @@
-public class Bullet {
+public class Bullet {  
   float x, y;
   float xVel, yVel;
-  
-  public Bullet(float x, float y, float speed, float angle) {
-    this.x = x;
-    this.y = y;
-    xVel = speed * (float)Math.cos(angle);
-    yVel = speed * (float)Math.sin(angle);
-  }
   
   public Bullet(float x, float y, float xVel, float yVel) {
     this.x = x;
@@ -16,6 +9,10 @@ public class Bullet {
     this.yVel = yVel;
   }
   
+  public Bullet(float x, float y, float targetX, float targetY, float speed) {
+    this(x, y, targetX - x, targetY - y);
+  }
+
   public void move() {
     x += xVel;
     y += yVel;
