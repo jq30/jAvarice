@@ -23,14 +23,14 @@ public abstract class AttackSequence {
 public class SequenceA extends AttackSequence {
   public SequenceA(float x, float y) {
     AttackPattern[] patterns = {
-        new SingleAimedBullet(298, 256),
-        new SingleAimedBullet(283, 275),
-        new SingleAimedBullet(311, 276),
-        new SingleAimedBullet(269, 300),
-        new SingleAimedBullet(323, 298),
-        new SingleAimedBullet(254, 321),
-        new SingleAimedBullet(335, 321),
-        new SingleAimedBullet(299, 302)
+        new SingleAimedBullet(x + 298 - 300, y + 256 - 300),
+        new SingleAimedBullet(x + 283 - 300, y + 275 - 300),
+        new SingleAimedBullet(x + 311 - 300, y + 276 - 300),
+        new SingleAimedBullet(x + 269 - 300, y + 300 - 300),
+        new SingleAimedBullet(x + 323 - 300, y + 298 - 300),
+        new SingleAimedBullet(x + 254 - 300, y + 321 - 300),
+        new SingleAimedBullet(x + 335 - 300, y + 321 - 300),
+        new SingleAimedBullet(x + 299 - 300, y + 302 - 300)
     };
     
     for (AttackPattern p : patterns) {

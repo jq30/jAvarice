@@ -46,5 +46,5 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  println(currentBullets.size());
+  currentSequence = new SequenceA(mouseX, mouseY);
 }
