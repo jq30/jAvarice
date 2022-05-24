@@ -10,7 +10,7 @@ public class Bullet {
   }
   
   public Bullet(float x, float y, float targetX, float targetY, float speed) {
-    this(x, y, targetX - x, targetY - y);
+    this(x, y, speed * (targetX - x) / dist(x, y, targetX, targetY), speed * (targetY - y) / dist(x, y, targetX, targetY));
   }
 
   public void move() {

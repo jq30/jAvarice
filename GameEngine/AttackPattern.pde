@@ -9,6 +9,7 @@ public abstract class AttackPattern {
   }
 
   public abstract Bullet[] getBullets();
+  public abstract boolean ready();
 }
 
 class SingleAimedBullet extends AttackPattern {
@@ -18,10 +19,14 @@ class SingleAimedBullet extends AttackPattern {
   
   public Bullet[] getBullets() {
     Bullet[] B = {
-      new Bullet(x, y, player.x, player.y, 3)
+      new Bullet(x, y, player.x, player.y, 1)
     };
     
     finished = true;
     return B;
+  }
+  
+  public boolean ready() {
+    return true;
   }
 }

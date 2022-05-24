@@ -1,20 +1,40 @@
-import java.util.Deque;
+import java.util.*;
 
 public abstract class AttackSequence {
-  ArrayList<Bullet> currentBullets = new ArrayList<Bullet>(); //replace this with custom linkedlist later maybe
-  ArrayList<AttackPattern> currentPatterns = new ArrayList<AttackPattern>();
-  Deque<AttackPattern> attacks;
+  LinkedList<AttackPattern> currentPatterns = new LinkedList<AttackPattern>();
+  Deque<AttackPattern> attacks = new ArrayDeque<AttackPattern>();
 
   public void update() {
-    for (Bullet b : currentBullets) {
-      b.move();
-      b.display();
+    if (attacks.size() > 0 && attacks.element().ready()) { //short circuiting please dont fail me now
+      currentPatterns.add(attacks.remove());
+    }
+    
+    for (AttackPattern a : currentPatterns) {
+      if (! a.finished) {
+        Bullet[] bulletsToAdd = a.getBullets();
+        for (Bullet b : bulletsToAdd) {
+          currentBullets.add(b);
+        }
+      }
     }
   }
 }
 
-public class SequenceA {
+public class SequenceA extends AttackSequence {
   public SequenceA(float x, float y) {
+    AttackPattern[] patterns = {
+        new SingleAimedBullet(298, 256),
+        new SingleAimedBullet(283, 275),
+        new SingleAimedBullet(311, 276),
+        new SingleAimedBullet(269, 300),
+        new SingleAimedBullet(323, 298),
+        new SingleAimedBullet(254, 321),
+        new SingleAimedBullet(335, 321),
+        new SingleAimedBullet(299, 302)
+    };
     
+    for (AttackPattern p : patterns) {
+      attacks.add(p);
+    }
   }
 }
