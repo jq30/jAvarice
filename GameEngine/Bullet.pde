@@ -21,12 +21,18 @@ public class Bullet {
   }
   
   public void display() {
+    if (offScreen()) {
+      return; //ideally we'd delete this bullet, but since bullet spammed thingy isnt too bad to work through...
+    }
     circle(x, y, radius * 2);
   }
   
   public boolean hit() {
-    println("HIT!");
     return dist(player.x, player.y, x, y) < (Player.hitboxRadius + radius);
+  }
+  
+  public boolean offScreen() {
+    return x < -5 || y < -5 || x > width + 5 || y > width + 5;
   }
 }
 

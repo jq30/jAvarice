@@ -25,7 +25,7 @@ public abstract class AttackPattern {
 
 //////
 
-class SingleAimedBullet extends AttackPattern {
+public class SingleAimedBullet extends AttackPattern {
   public SingleAimedBullet(float x, float y) {
     super(x, y);
   }
@@ -43,7 +43,7 @@ class SingleAimedBullet extends AttackPattern {
   }
 }
 
-class SpinnyThing extends AttackPattern {
+public class SpinnyThing extends AttackPattern {
   int i;
   
   public SpinnyThing(float x, float y) {
