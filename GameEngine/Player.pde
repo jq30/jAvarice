@@ -16,6 +16,11 @@ public class Player {
     if (keysPressed[RIGHT]) {
       x += speed;
     }
+    if (keysPressed[SHIFT]) {
+      speed = 1;
+    } else {
+      speed = 3;
+    }
   }
   
   public void display() {
