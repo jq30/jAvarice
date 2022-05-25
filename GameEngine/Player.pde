@@ -1,6 +1,7 @@
 public class Player {
   float x, y;
-  float speed = 5;
+  float speed = 3;
+  static final float hitboxRadius = 5f/2f;
   
   public void move() {
     if (keysPressed[UP]) {
@@ -18,6 +19,6 @@ public class Player {
   }
   
   public void display() {
-    circle(x, y, 10); //placeholder
+    circle(x, y, hitboxRadius * 2); //placeholder
   }
 }
