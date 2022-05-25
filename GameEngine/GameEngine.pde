@@ -48,11 +48,7 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  clearAllBullets();
-  currentSequence = new SequenceB(mouseX, mouseY);
-  for (Bullet B : currentBullets) {
-    println(B.xVel);
-  }
+  currentSequence.attacks.add(new SpinnyThing(mouseX, mouseY));
 }
 
 void clearAllBullets() {
