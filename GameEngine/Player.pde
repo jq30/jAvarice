@@ -6,15 +6,27 @@ public class Player {
   public void move() {
     if (keysPressed[UP]) {
       y -= speed;
+      if (y < 0) {
+        y = 0;
+      }
     }
     if (keysPressed[DOWN]) {
       y += speed;
+      if (y > height) {
+        y = height;
+      }
     }
     if (keysPressed[LEFT]) {
       x -= speed;
+      if (x < 0) {
+        x = 0;
+      }
     }
     if (keysPressed[RIGHT]) {
       x += speed;
+      if (x > width - Sidebar.barWidth) {
+        x = width - Sidebar.barWidth;
+      }
     }
     if (keysPressed[SHIFT]) {
       speed = 1;
