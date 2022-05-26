@@ -41,6 +41,6 @@ public class Player {
   }
   
   public void render() {
-    rect(x - 15, y - 30, 30, 60); //placeholder to demonstrate how big the image should be
+    image(GraphicsEngine.playerSprite, x - 15, y - 30);
   }
 }
