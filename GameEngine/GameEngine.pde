@@ -3,7 +3,7 @@ Player player = new Player();
 GameState state = GameState.PLAY;
 List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
 AttackSequence currentSequence = new SequenceB(300, 300);
-Sidebar sidebar = new Sidebar();
+Sidebar sidebar;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -11,6 +11,7 @@ enum GameState {
 
 void setup() {
   size(600, 600);
+  sidebar = new Sidebar();
 }
 
 void draw() {
