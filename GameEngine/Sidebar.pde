@@ -7,6 +7,10 @@ public class Sidebar {
   }
   
   public void display() {
+    fill(255);
     rect(startDrawPos, 0, barWidth, height);
+    fill(0);
+    text("HP", startDrawPos + 20, 20);
+    text(playerHP, startDrawPos + 20, 40);
   }
 }

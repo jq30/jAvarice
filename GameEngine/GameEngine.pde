@@ -4,6 +4,7 @@ GameState state = GameState.PLAY;
 List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
 AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
+int playerHP = 5;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
