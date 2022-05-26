@@ -36,6 +36,11 @@ public class Player {
   }
   
   public void display() {
+    render();
     circle(x, y, hitboxRadius * 2); //placeholder
+  }
+  
+  public void render() {
+    rect(x - 15, y - 30, 30, 60); //placeholder to demonstrate how big the image should be
   }
 }
