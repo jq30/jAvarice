@@ -41,6 +41,7 @@ public class Player {
   }
   
   public void render() {
-    image(GraphicsEngine.playerSprite, x - 15, y - 30);
+    PImage playerSprite = loadImage("ImageLibrary/????.png");
+    image(playerSprite, x - 15, y - 30);
   }
 }
