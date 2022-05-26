@@ -14,6 +14,7 @@ enum GameState {
 void setup() {
   size(600, 600);
   sidebar = new Sidebar();
+  noStroke();
 }
 
 void draw() {

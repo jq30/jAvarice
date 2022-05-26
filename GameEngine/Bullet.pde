@@ -24,6 +24,7 @@ public class Bullet {
     if (offScreen()) {
       return; //ideally we'd delete this bullet, but since bullet spammed thingy isnt too bad to work through...
     }
+    fill(255, 200, 200);
     circle(x, y, radius * 2);
   }
   
