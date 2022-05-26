@@ -5,6 +5,7 @@ List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with cust
 AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
+int invulnerability = 60;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -24,6 +25,7 @@ void draw() {
       
       for (Bullet b : currentBullets) {
         if (b.hit()) {
+          triggerHit();
           background(0);
         }
         b.display();
@@ -31,6 +33,7 @@ void draw() {
       
       currentSequence.update();
       sidebar.display();
+      if (--invulnerability < 0) { invulnerability = 0; }
       break;
   }
 }
@@ -60,5 +63,8 @@ void clearAllBullets() {
 }
 
 void triggerHit() {
-  println("HIT!"); //do something please
+  if (invulnerability == 0) {
+    playerHP--;
+    invulnerability = 60;
+  }
 }
