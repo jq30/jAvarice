@@ -1,11 +1,12 @@
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
-GameState state = GameState.PLAY;
 List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
 AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
 int invulnerability = 60;
+Menu menu = new Menu();
+GameState state = GameState.MENU;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -19,6 +20,9 @@ void setup() {
 
 void draw() {
   switch (state) {
+    case MENU:
+      menu.display();
+      break;
     case PLAY:
       background(255);
       player.display();
