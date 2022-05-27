@@ -1,5 +1,3 @@
-import java.util.*;
-
 public abstract class AttackSequence {
   LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 

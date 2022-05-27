@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Iterator;
+
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
 GameState state = GameState.PLAY;

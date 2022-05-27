@@ -15,20 +15,27 @@ public abstract class AttackPattern {
   }
 
   public void update() {
-    for (Bullet b : currentBullets) {
-      b.move();
-      if (b.hit()) {
-        triggerHit();
-        background(0);
+    Iterator bulletIterator = currentBullets.iterator();
+    
+    while (bulletIterator.hasNext()) {
+      Bullet b = (Bullet)bulletIterator.next();
+      if (b.offScreen()) {
+        bulletIterator.remove();
+      } else {
+        b.move();
+        if (b.hit()) {
+          triggerHit();
+          background(0); //temp
+        }
+        b.display();
       }
-      b.display();
     }
   }
 
   public abstract Bullet[] initBullets();
 }
 
-public abstract class DelayedAttack extends AttackPattern{
+public abstract class DelayedAttack extends AttackPattern {
   int frameToWaitUntil;
   
   public DelayedAttack(float x, float y, int framesToWait) {
