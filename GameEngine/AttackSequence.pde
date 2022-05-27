@@ -2,11 +2,16 @@ public abstract class AttackSequence {
   LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 
   public void update() {    
-    for (AttackPattern a : attacks) {
-      a.update();
+    Iterator it = attacks.iterator();
+    while (it.hasNext()) {
+      AttackPattern a = (AttackPattern)it.next();
+      if (! a.ready()) {
+        break;
+      }
       if (! a.finished) {
         a.initBullets();
       }
+      a.update();
     }
   }
 }
