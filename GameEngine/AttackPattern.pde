@@ -28,11 +28,12 @@ public abstract class AttackPattern {
         bulletIterator.remove();
       } else {
         b.move();
+        b.display();
         if (b.hit()) {
           triggerHit();
-          background(0); //temp
+          fill(255, 50, 50, 10);
+          rect(0, 0, width, height);
         }
-        b.display();
       }
     }
   }
