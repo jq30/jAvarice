@@ -1,4 +1,9 @@
 public abstract class Menu {
+  MenuItem[] pauseMenuItems = {
+    new StartItem("Resume", 40, 40),
+    new TitleItem("Quit to Title", 60, 60),
+    new ExitItem("Quit to Desktop", 80, 80)
+  };
   MenuItem[] menuItems;
   int currentItem;
   
@@ -28,7 +33,7 @@ public abstract class Menu {
 
 public class MainMenu extends Menu {
   public MainMenu() {
-    super(MenuData.mainMenuItems);
+    super(mainMenuItems);
   }
   
   public void drawMenuItems() {
@@ -52,7 +57,7 @@ public class MainMenu extends Menu {
 
 public class PauseMenu extends Menu {
   public PauseMenu() {
-    super(MenuData.pauseMenuItems);
+    super(pauseMenuItems);
   }
   
   public void display() {
@@ -126,17 +131,4 @@ public class TitleItem extends MenuItem {
   public void execute() {
     state = GameState.MENU;
   }
-}
-
-public class MenuData {
-  static final MenuItem[] mainMenuItems = {
-    new StartItem("START", 40, 40),
-    new ExitItem("EXIT", 60, 60)
-  };
-  
-   static final MenuItem[] pauseMenuItems = {
-    new StartItem("Resume", 40, 40),
-    new TitleItem("Quit to Title", 60, 60),
-    new ExitItem("Quit to Desktop", 80, 80)
-  };
 }
