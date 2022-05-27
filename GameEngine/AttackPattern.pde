@@ -25,7 +25,7 @@ public abstract class AttackPattern {
     }
   }
 
-  public abstract Bullet[] getBullets();
+  public abstract Bullet[] initBullets();
 }
 
 public abstract class DelayedAttack extends AttackPattern{
@@ -49,7 +49,7 @@ public class SingleAimedBullet extends AttackPattern {
     super(x, y);
   }
   
-  public Bullet[] getBullets() {
+  public Bullet[] initBullets() {
     Bullet[] B = {
       new Bullet(x, y, player.x, player.y, 1)
     };
@@ -70,7 +70,7 @@ public class SpinnyThing extends AttackPattern {
     i = 0;
   }
   
-  public Bullet[] getBullets() {
+  public Bullet[] initBullets() {
     i++;
     if (i % 2 == 0) {
       Bullet[] B = {
