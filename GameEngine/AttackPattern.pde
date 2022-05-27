@@ -17,6 +17,11 @@ public abstract class AttackPattern {
   public void update() {
     for (Bullet b : currentBullets) {
       b.move();
+      if (b.hit()) {
+        triggerHit();
+        background(0);
+      }
+      b.display();
     }
   }
 
