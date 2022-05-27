@@ -1,7 +1,18 @@
 public class Sidebar {
   static final int barWidth = 200;
+  int startDrawPos;
+  
+  public Sidebar() {
+    startDrawPos = width - barWidth;
+  }
   
   public void display() {
-    rect(width - barWidth, 0, width, height);
+    fill(255);
+    stroke(0);
+    rect(startDrawPos, 0, barWidth, height);
+    noStroke();
+    fill(0);
+    text("HP", startDrawPos + 20, 20);
+    text(playerHP, startDrawPos + 20, 40);
   }
 }

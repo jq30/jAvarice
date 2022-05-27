@@ -37,6 +37,7 @@ public class Player {
   
   public void display() {
     render();
+    fill(150, 200, 160);
     circle(x, y, hitboxRadius * 2); //placeholder
   }
   
