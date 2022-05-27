@@ -7,7 +7,7 @@ public abstract class AttackSequence {
     for (AttackPattern a : attacks) {
       a.update();
       if (! a.finished) {
-        a.getBullets();
+        a.initBullets();
       }
     }
   }
