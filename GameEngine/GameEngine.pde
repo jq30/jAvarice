@@ -49,18 +49,37 @@ void draw() {
 }
 
 void keyPressed() {
-  if (keyCode < keysPressed.length) {
-    keysPressed[keyCode] = true;
-  } else {
-    println("warning: key is not within accepted range: " + keyCode);
+  switch (state) {
+    case PLAY:
+      if (keyCode < keysPressed.length) {
+        keysPressed[keyCode] = true;
+      } else {
+        println("warning: key is not within accepted range: " + keyCode);
+      }
+      break;
+    case MENU:
+      if (keyCode == UP) {
+        
+      }
+      if (keyCode == DOWN) {
+        
+      }
+      break;
+    default:
+      break;
   }
 }
 
 void keyReleased() {
-  if (keyCode < keysPressed.length) {
-    keysPressed[keyCode] = false;
-  } else {
-    println("warning: key is not within accepted range: " + keyCode);
+  switch (state) {
+    case PLAY:
+      if (keyCode < keysPressed.length) {
+        keysPressed[keyCode] = false;
+      } else {
+        println("warning: key is not within accepted range: " + keyCode);
+      }
+     default:
+       break;
   }
 }
 
