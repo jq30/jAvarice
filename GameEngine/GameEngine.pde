@@ -5,7 +5,8 @@ AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
 int invulnerability = 60;
-Menu menu = new Menu();
+Menu menu = new MainMenu();
+Menu pausemenu = new PauseMenu();
 GameState state = GameState.MENU;
 
 enum GameState {
@@ -45,12 +46,18 @@ void draw() {
       fill(0);
       text("GAME OVER", 300, 300);
       break;
+    case PAUSED:
+      pausemenu.display();
+      break;
   }
 }
 
 void keyPressed() {
   switch (state) {
     case PLAY:
+      if (keyCode == TAB) {
+        state = GameState.PAUSED;
+      }
       if (keyCode < keysPressed.length) {
         keysPressed[keyCode] = true;
       } else {
@@ -66,6 +73,17 @@ void keyPressed() {
       }
       if (keyCode == 'Z' || keyCode == ENTER) {
         menu.executeCurrent();
+      }
+      break;
+    case PAUSED:
+      if (keyCode == UP) {
+        pausemenu.prev();
+      }
+      if (keyCode == DOWN) {
+        pausemenu.next();
+      }
+      if (keyCode == 'Z' || keyCode == ENTER) {
+        pausemenu.executeCurrent();
       }
       break;
     default:
