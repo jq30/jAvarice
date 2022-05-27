@@ -1,7 +1,8 @@
 public class Menu {
   MenuItem[] menuItems = {
     new MenuItem("START", 40, 40),
-    new MenuItem("EXIT", 60, 60)
+    new MenuItem("EXIT", 60, 60),
+    new MenuItem("idk this might do something", 300, 300)
   };
   int currentItem = 0;
   
@@ -16,6 +17,18 @@ public class Menu {
         fill(0);
       }
       M.display();
+    }
+  }
+  
+  public void next() {
+    if (! (currentItem >= menuItems.length - 1)) {
+      currentItem++;
+    }
+  }
+  
+  public void prev() {
+    if (currentItem > 0) {
+      currentItem--;
     }
   }
 }

@@ -59,10 +59,10 @@ void keyPressed() {
       break;
     case MENU:
       if (keyCode == UP) {
-        
+        menu.prev();
       }
       if (keyCode == DOWN) {
-        
+        menu.next();
       }
       break;
     default:
