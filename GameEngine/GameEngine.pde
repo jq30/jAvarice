@@ -6,6 +6,7 @@ Sidebar sidebar;
 int playerHP = 5;
 int invulnerability = 60;
 Menu menu = new Menu();
+Menu pausemenu = new PauseMenu();
 GameState state = GameState.MENU;
 
 enum GameState {
@@ -45,13 +46,16 @@ void draw() {
       fill(0);
       text("GAME OVER", 300, 300);
       break;
+    case PAUSED:
+      pausemenu.display();
+      break;
   }
 }
 
 void keyPressed() {
   switch (state) {
     case PLAY:
-      if (keyCode == ESC) {
+      if (keyCode == TAB) {
         state = GameState.PAUSED;
       }
       if (keyCode < keysPressed.length) {

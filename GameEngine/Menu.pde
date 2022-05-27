@@ -9,14 +9,7 @@ public class Menu {
     background(255);
     fill(0);
     text("WELCOME TO jAvarice", 20, 20);
-    for (MenuItem M : menuItems) {
-      if (M == menuItems[currentItem]) {
-        fill(20, 20, 255);
-      } else {
-        fill(0);
-      }
-      M.display();
-    }
+    drawMenuItems();
   }
   
   public void next() {
@@ -33,6 +26,30 @@ public class Menu {
   
   public void executeCurrent() {
     menuItems[currentItem].execute();
+  }
+  
+  public void drawMenuItems() {
+    for (MenuItem M : menuItems) {
+      if (M == menuItems[currentItem]) {
+        fill(20, 20, 255);
+      } else {
+        fill(0);
+      }
+      M.display();
+    }
+  }
+}
+
+public class PauseMenu extends Menu {
+  MenuItem[] menuItems = {
+    
+  };
+  
+  public void display() {
+    background(255, 200);
+    fill(0);
+    text("PAUSED", 20, 20);
+    drawMenuItems();
   }
 }
 
