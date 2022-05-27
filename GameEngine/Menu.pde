@@ -42,7 +42,9 @@ public class Menu {
 
 public class PauseMenu extends Menu {
   MenuItem[] menuItems = {
-    
+    new StartItem("Resume", 40, 40),
+    new TitleItem("Quit to Title", 60, 60),
+    new ExitItem("Quit to Desktop", 80, 80)
   };
   
   public void display() {
@@ -91,5 +93,15 @@ public class ExitItem extends MenuItem {
   
   public void execute() {
     exit();
+  }
+}
+
+public class TitleItem extends MenuItem {
+  public TitleItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    state = GameState.MENU;
   }
 }
