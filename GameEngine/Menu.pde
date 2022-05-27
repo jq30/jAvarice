@@ -16,15 +16,21 @@ public class Menu {
 public class MenuItem {
   String displayText;
   float x, y;
+  boolean selected;
   
   public MenuItem(String t, float a, float b) {
     displayText = t;
     x = a;
     y = b;
+    selected = false;
   }
   
   public void display() {
-    fill(0);
+    if (selected) {
+      fill(200, 200, 255);
+    } else {
+      fill(0);
+    }
     text(displayText, x, y);
   }
 }
