@@ -36,6 +36,11 @@ void draw() {
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
       break;
+    case OVER:
+      background(255);
+      fill(0);
+      text("GAME OVER", 300, 300);
+      break;
   }
 }
 
@@ -67,5 +72,8 @@ void triggerHit() {
   if (invulnerability == 0) {
     playerHP--;
     invulnerability = 60;
+  }
+  if (playerHP == 0) {
+    state = GameState.OVER;
   }
 }
