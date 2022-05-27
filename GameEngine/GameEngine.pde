@@ -64,6 +64,9 @@ void keyPressed() {
       if (keyCode == DOWN) {
         menu.next();
       }
+      if (keyCode == 'Z' || keyCode == ENTER) {
+        menu.executeCurrent();
+      }
       break;
     default:
       break;

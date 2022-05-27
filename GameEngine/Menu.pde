@@ -1,8 +1,7 @@
 public class Menu {
   MenuItem[] menuItems = {
-    new MenuItem("START", 40, 40),
-    new MenuItem("EXIT", 60, 60),
-    new MenuItem("idk this might do something", 300, 300)
+    new StartItem("START", 40, 40),
+    new ExitItem("EXIT", 60, 60)
   };
   int currentItem = 0;
   
@@ -31,9 +30,13 @@ public class Menu {
       currentItem--;
     }
   }
+  
+  public void executeCurrent() {
+    menuItems[currentItem].execute();
+  }
 }
 
-public class MenuItem {
+public abstract class MenuItem {
   String displayText;
   float x, y;
   boolean selected;
@@ -47,5 +50,29 @@ public class MenuItem {
   
   public void display() {
     text(displayText, x, y);
+  }
+  
+  public abstract void execute();
+}
+
+/////
+
+public class StartItem extends MenuItem {
+  public StartItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    state = GameState.PLAY;
+  }
+}
+
+public class ExitItem extends MenuItem {
+  public ExitItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    exit();
   }
 }
