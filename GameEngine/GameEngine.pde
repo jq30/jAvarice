@@ -51,6 +51,9 @@ void draw() {
 void keyPressed() {
   switch (state) {
     case PLAY:
+      if (keyCode == ESC) {
+        state = GameState.PAUSED;
+      }
       if (keyCode < keysPressed.length) {
         keysPressed[keyCode] = true;
       } else {
