@@ -30,6 +30,7 @@ void draw() {
       if (--invulnerability < 0) { invulnerability = 0; }
       break;
   }
+  text(frameRate, 20, 20);
 }
 
 void keyPressed() {

@@ -2,11 +2,13 @@ public abstract class AttackPattern {
   LinkedList<Bullet> currentBullets;
   float x, y; //point of origin of attack
   boolean finished;
+  boolean empty;
   
   public AttackPattern(float x, float y) {
     this.x = x;
     this.y = y;
     finished = false;
+    empty = false;
     currentBullets = new LinkedList<Bullet>();
   }
 
@@ -15,6 +17,9 @@ public abstract class AttackPattern {
   }
 
   public void update() {
+    if (finished && currentBullets.size() == 0) {
+      empty = true;
+    }
     Iterator bulletIterator = currentBullets.iterator();
     
     while (bulletIterator.hasNext()) {

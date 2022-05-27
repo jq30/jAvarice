@@ -11,7 +11,11 @@ public abstract class AttackSequence {
       if (! a.finished) {
         a.initBullets();
       }
-      a.update();
+      if (a.empty) {
+        it.remove();
+      } else {
+        a.update();
+      }
     }
   }
 }
