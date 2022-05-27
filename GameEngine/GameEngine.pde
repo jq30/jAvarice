@@ -75,6 +75,17 @@ void keyPressed() {
         menu.executeCurrent();
       }
       break;
+    case PAUSED:
+      if (keyCode == UP) {
+        pausemenu.prev();
+      }
+      if (keyCode == DOWN) {
+        pausemenu.next();
+      }
+      if (keyCode == 'Z' || keyCode == ENTER) {
+        pausemenu.executeCurrent();
+      }
+      break;
     default:
       break;
   }
