@@ -23,6 +23,20 @@ public abstract class AttackPattern {
   public abstract Bullet[] getBullets();
 }
 
+public abstract class DelayedAttack extends AttackPattern{
+  int frameToWaitUntil;
+  
+  public DelayedAttack(float x, float y, int framesToWait) {
+    super(x, y);
+    frameToWaitUntil = frameCount + framesToWait;
+  }
+  
+  @Override
+  public boolean ready() {
+    return frameCount > frameToWaitUntil;
+  }
+}
+
 //////
 
 public class SingleAimedBullet extends AttackPattern {
