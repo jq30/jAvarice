@@ -1,15 +1,10 @@
 import java.util.*;
 
 public abstract class AttackSequence {
-  LinkedList<AttackPattern> currentPatterns = new LinkedList<AttackPattern>();
-  Deque<AttackPattern> attacks = new ArrayDeque<AttackPattern>();
+  LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 
-  public void update() {
-    if (attacks.size() > 0 && attacks.element().ready()) { //short circuiting please dont fail me now
-      currentPatterns.add(attacks.remove());
-    }
-    
-    for (AttackPattern a : currentPatterns) {
+  public void update() {    
+    for (AttackPattern a : attacks) {
       a.update();
       if (! a.finished) {
         Bullet[] bulletsToAdd = a.getBullets();
