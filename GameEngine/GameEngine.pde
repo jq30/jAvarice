@@ -3,11 +3,6 @@ import java.util.Iterator;
 
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
-<<<<<<< HEAD
-GameState state = GameState.PLAY;
-=======
-List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
->>>>>>> main
 AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
