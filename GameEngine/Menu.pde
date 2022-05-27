@@ -1,15 +1,6 @@
 public abstract class Menu {
-  MenuItem[] pauseMenuItems = {
-    new StartItem("Resume", 40, 40),
-    new TitleItem("Quit to Title", 60, 60),
-    new ExitItem("Quit to Desktop", 80, 80)
-  };
   MenuItem[] menuItems;
   int currentItem;
-  
-  public Menu(MenuItem[] a) {
-    menuItems = a;
-  }
   
   public void next() {
     if (! (currentItem >= menuItems.length - 1)) {
@@ -33,7 +24,15 @@ public abstract class Menu {
 
 public class MainMenu extends Menu {
   public MainMenu() {
-    super(mainMenuItems);
+    init();
+  }
+  
+  private void init() {
+    MenuItem[] mainMenuItems = {
+      new StartItem("START", 40, 40),
+      new ExitItem("EXIT", 60, 60)
+    };
+    menuItems = mainMenuItems;
   }
   
   public void drawMenuItems() {
@@ -57,7 +56,16 @@ public class MainMenu extends Menu {
 
 public class PauseMenu extends Menu {
   public PauseMenu() {
-    super(pauseMenuItems);
+    init();
+  }
+  
+  private void init() {
+     MenuItem[] pauseMenuItems = {
+      new StartItem("Resume", 40, 40),
+      new TitleItem("Quit to Title", 60, 60),
+      new ExitItem("Quit to Desktop", 80, 80)
+    };
+    menuItems = pauseMenuItems;
   }
   
   public void display() {
