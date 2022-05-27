@@ -43,7 +43,7 @@ void draw() {
       pausemenu.display();
       break;
   }
-  text(frameRate, 20, 20);
+  text(frameRate, 20, height - 20);
 }
 
 void keyPressed() {
