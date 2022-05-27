@@ -5,7 +5,7 @@ AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
 int invulnerability = 60;
-Menu menu = new Menu();
+Menu menu = new MainMenu();
 Menu pausemenu = new PauseMenu();
 GameState state = GameState.MENU;
 

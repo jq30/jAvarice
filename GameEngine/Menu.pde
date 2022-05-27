@@ -1,15 +1,9 @@
-public class Menu {
-  MenuItem[] menuItems = {
-    new StartItem("START", 40, 40),
-    new ExitItem("EXIT", 60, 60)
-  };
-  int currentItem = 0;
+public abstract class Menu {
+  MenuItem[] menuItems;
+  int currentItem;
   
-  public void display() {
-    background(255);
-    fill(0);
-    text("WELCOME TO jAvarice", 20, 20);
-    drawMenuItems();
+  public Menu(MenuItem[] a) {
+    menuItems = a;
   }
   
   public void next() {
@@ -28,6 +22,46 @@ public class Menu {
     menuItems[currentItem].execute();
   }
   
+  public abstract void display();
+  public abstract void drawMenuItems();
+}
+
+public class MainMenu extends Menu {
+  public MainMenu() {
+    super(MenuData.mainMenuItems);
+  }
+  
+  public void drawMenuItems() {
+    for (MenuItem M : menuItems) {
+      if (M == menuItems[currentItem]) {
+        fill(20, 20, 255);
+      } else {
+        fill(0);
+      }
+      M.display();
+    }
+  }
+  
+  public void display() {
+    background(255);
+    fill(0);
+    text("WELCOME TO jAvarice", 20, 20);
+    drawMenuItems();
+  }
+}
+
+public class PauseMenu extends Menu {
+  public PauseMenu() {
+    super(MenuData.pauseMenuItems);
+  }
+  
+  public void display() {
+    background(255, 200);
+    fill(0);
+    text("PAUSED", 20, 20);
+    drawMenuItems();
+  }
+  
   public void drawMenuItems() {
     for (MenuItem M : menuItems) {
       if (M == menuItems[currentItem]) {
@@ -40,20 +74,8 @@ public class Menu {
   }
 }
 
-public class PauseMenu extends Menu {
-  MenuItem[] menuItems = {
-    new StartItem("Resume", 40, 40),
-    new TitleItem("Quit to Title", 60, 60),
-    new ExitItem("Quit to Desktop", 80, 80)
-  };
-  
-  public void display() {
-    background(255, 200);
-    fill(0);
-    text("PAUSED", 20, 20);
-    drawMenuItems();
-  }
-}
+/////
+
 
 public abstract class MenuItem {
   String displayText;
@@ -104,4 +126,17 @@ public class TitleItem extends MenuItem {
   public void execute() {
     state = GameState.MENU;
   }
+}
+
+public class MenuData {
+  static final MenuItem[] mainMenuItems = {
+    new StartItem("START", 40, 40),
+    new ExitItem("EXIT", 60, 60)
+  };
+  
+   static final MenuItem[] pauseMenuItems = {
+    new StartItem("Resume", 40, 40),
+    new TitleItem("Quit to Title", 60, 60),
+    new ExitItem("Quit to Desktop", 80, 80)
+  };
 }
