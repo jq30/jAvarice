@@ -8,3 +8,4 @@ Tue | 5/24/22 | Finished implementing AttackPattern/Sequence system, finished hi
 Wed | 5/24/22 | Started sidebar, small changes | Keep track of player health
 Thu | 5/25/22 | Finished player hit system, dying to be implemented | Menu system
 Fri | 5/26/22 | Main menu and start menu, also framework for other menus | Dialogue system
+Fri | 5/26/22 | Partially rewrote how AttackPatterns are coded | 
