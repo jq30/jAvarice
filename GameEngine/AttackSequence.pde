@@ -1,4 +1,6 @@
 public abstract class AttackSequence {
+  //this linkedlist serves as both list and queue.
+  //loop through the list, executing attackpatterns, and if the next one isn't ready, end early.
   LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 
   public void update() {    
