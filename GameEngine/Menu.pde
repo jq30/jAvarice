@@ -61,9 +61,9 @@ public class PauseMenu extends Menu {
   
   private void init() {
      MenuItem[] pauseMenuItems = {
-      new StartItem("Resume", 40, 40),
-      new TitleItem("Quit to Title", 60, 60),
-      new ExitItem("Quit to Desktop", 80, 80)
+      new StartItem("RESUME", 40, 40),
+      new TitleItem("SAVE AND QUIT", 60, 60),
+      new ResetItem("QUIT TO TITLE", 80, 80)
     };
     menuItems = pauseMenuItems;
   }
@@ -138,5 +138,15 @@ public class TitleItem extends MenuItem {
   
   public void execute() {
     state = GameState.MENU;
+  }
+}
+
+public class ResetItem extends MenuItem {
+  public ResetItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    setup(); //not working atm, will work when everything is placed in setup()
   }
 }
