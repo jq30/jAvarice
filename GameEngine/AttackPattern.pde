@@ -39,7 +39,19 @@ public abstract class AttackPattern {
     }
   }
 
-  public abstract Bullet[] initBullets();
+  public void initBullets() {
+    Bullet[] bulletsToInit = getBullets();
+    
+    if (bulletsToInit == null) {
+      return;
+    }
+    
+    for (Bullet B : bulletsToInit) {
+      currentBullets.add(B);
+    }
+  }
+  
+  public abstract Bullet[] getBullets(); //returns the next set of bullets to add to squence. returns null if none. should only be called when ready.
 }
 
 public abstract class DelayedAttack extends AttackPattern {
@@ -63,15 +75,12 @@ public class SingleAimedBullet extends AttackPattern {
     super(x, y);
   }
   
-  public Bullet[] initBullets() {
+  public Bullet[] getBullets() {
     Bullet[] B = {
       new Bullet(x, y, player.x, player.y, 1)
     };
     
     finished = true;
-    for (Bullet b : B) {
-      currentBullets.add(b);
-    }
     return B;
   }
 }
@@ -84,7 +93,7 @@ public class SpinnyThing extends AttackPattern {
     i = 0;
   }
   
-  public Bullet[] initBullets() {
+  public Bullet[] getBullets() {
     i++;
     if (i % 2 == 0) {
       Bullet[] B = {
@@ -97,9 +106,6 @@ public class SpinnyThing extends AttackPattern {
       };
       if (i == 60) {
         finished = true;
-      }
-      for (Bullet b : B) {
-        currentBullets.add(b);
       }
       return B;
     } else {
@@ -116,7 +122,7 @@ public class ThreeCluster extends AttackPattern {
     i = 0;
   }
   
-  public Bullet[] initBullets() {
+  public Bullet[] getBullets() {
     i++;
     if (i % 3 == 0) {
       Bullet[] B = {
@@ -126,9 +132,6 @@ public class ThreeCluster extends AttackPattern {
       };
       if (i == 9) {
         finished = true;
-      }
-      for (Bullet b : B) {
-        currentBullets.add(b);
       }
       return B;
     } else {
