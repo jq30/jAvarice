@@ -40,6 +40,7 @@ void draw() {
       text("GAME OVER", 300, 300);
       break;
     case PAUSED:
+      keysPressed = new boolean[128];
       pausemenu.display();
       break;
   }
