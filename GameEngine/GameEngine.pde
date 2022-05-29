@@ -1,6 +1,8 @@
+import java.util.LinkedList;
+import java.util.Iterator;
+
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
-List<Bullet> currentBullets = new LinkedList<Bullet>(); //replace this with custom linkedlist later maybe
 AttackSequence currentSequence = new SequenceB(300, 300);
 Sidebar sidebar;
 int playerHP = 5;
@@ -28,15 +30,6 @@ void draw() {
       background(255);
       player.display();
       player.move();
-      
-      for (Bullet b : currentBullets) {
-        if (b.hit()) {
-          triggerHit();
-          background(0);
-        }
-        b.display();
-      }
-      
       currentSequence.update();
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
@@ -50,6 +43,7 @@ void draw() {
       pausemenu.display();
       break;
   }
+  text(frameRate, 20, height - 20);
 }
 
 void keyPressed() {
@@ -106,10 +100,6 @@ void keyReleased() {
 
 void mousePressed() {
   currentSequence.attacks.add(new SpinnyThing(mouseX, mouseY));
-}
-
-void clearAllBullets() {
-  currentBullets = new LinkedList<Bullet>();
 }
 
 void triggerHit() {

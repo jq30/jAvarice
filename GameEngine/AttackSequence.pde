@@ -1,21 +1,22 @@
-import java.util.*;
-
 public abstract class AttackSequence {
-  LinkedList<AttackPattern> currentPatterns = new LinkedList<AttackPattern>();
-  Deque<AttackPattern> attacks = new ArrayDeque<AttackPattern>();
+  //this linkedlist serves as both list and queue.
+  //loop through the list, executing attackpatterns, and if the next one isn't ready, end early.
+  LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 
-  public void update() {
-    if (attacks.size() > 0 && attacks.element().ready()) { //short circuiting please dont fail me now
-      currentPatterns.add(attacks.remove());
-    }
-    
-    for (AttackPattern a : currentPatterns) {
-      a.update();
+  public void update() {    
+    Iterator it = attacks.iterator();
+    while (it.hasNext()) {
+      AttackPattern a = (AttackPattern)it.next();
+      if (! a.ready()) {
+        break;
+      }
       if (! a.finished) {
-        Bullet[] bulletsToAdd = a.getBullets();
-        for (Bullet b : bulletsToAdd) {
-          currentBullets.add(b);
-        }
+        a.initBullets();
+      }
+      if (a.empty) {
+        it.remove();
+      } else {
+        a.update();
       }
     }
   }

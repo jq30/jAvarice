@@ -2,11 +2,13 @@ public abstract class AttackPattern {
   LinkedList<Bullet> currentBullets;
   float x, y; //point of origin of attack
   boolean finished;
+  boolean empty;
   
   public AttackPattern(float x, float y) {
     this.x = x;
     this.y = y;
     finished = false;
+    empty = false;
     currentBullets = new LinkedList<Bullet>();
   }
 
@@ -15,15 +17,32 @@ public abstract class AttackPattern {
   }
 
   public void update() {
-    for (Bullet b : currentBullets) {
-      b.move();
+    if (finished && currentBullets.size() == 0) {
+      empty = true;
+      return;
+    }
+    Iterator bulletIterator = currentBullets.iterator();
+    
+    while (bulletIterator.hasNext()) {
+      Bullet b = (Bullet)bulletIterator.next();
+      if (b.offScreen()) {
+        bulletIterator.remove();
+      } else {
+        b.move();
+        b.display();
+        if (b.hit()) {
+          triggerHit();
+          fill(255, 50, 50, 10);
+          rect(0, 0, width, height);
+        }
+      }
     }
   }
 
-  public abstract Bullet[] getBullets();
+  public abstract Bullet[] initBullets();
 }
 
-public abstract class DelayedAttack extends AttackPattern{
+public abstract class DelayedAttack extends AttackPattern {
   int frameToWaitUntil;
   
   public DelayedAttack(float x, float y, int framesToWait) {
@@ -44,7 +63,7 @@ public class SingleAimedBullet extends AttackPattern {
     super(x, y);
   }
   
-  public Bullet[] getBullets() {
+  public Bullet[] initBullets() {
     Bullet[] B = {
       new Bullet(x, y, player.x, player.y, 1)
     };
@@ -65,7 +84,7 @@ public class SpinnyThing extends AttackPattern {
     i = 0;
   }
   
-  public Bullet[] getBullets() {
+  public Bullet[] initBullets() {
     i++;
     if (i % 2 == 0) {
       Bullet[] B = {
