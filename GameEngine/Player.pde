@@ -52,7 +52,7 @@ public class Player {
         sprite = sprites.playerRight;
         break;
     }
-    image(sprite, x - 15, y - 30);
+    image(sprite, x - sprite.width / 2, y - sprite.height / 2);
     fill(150, 200, 160);
     circle(x, y, hitboxRadius * 2); //placeholder
   }
