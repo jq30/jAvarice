@@ -10,6 +10,7 @@ int invulnerability = 60;
 Menu menu = new MainMenu();
 Menu pausemenu = new PauseMenu();
 GameState state = GameState.MENU;
+GraphicsEngine sprites;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -19,6 +20,7 @@ void setup() {
   size(750, 750);
   sidebar = new Sidebar();
   noStroke();
+  sprites = new GraphicsEngine();
 }
 
 void draw() {

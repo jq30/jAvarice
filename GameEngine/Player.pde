@@ -36,13 +36,8 @@ public class Player {
   }
   
   public void display() {
-    render();
     fill(150, 200, 160);
+    image(sprites.playerModel, x - 15, y - 30);
     circle(x, y, hitboxRadius * 2); //placeholder
-  }
-  
-  public void render() {
-    PImage playerSprite = loadImage("ImageLibrary/????.png");
-    image(playerSprite, x - 15, y - 30);
   }
 }
