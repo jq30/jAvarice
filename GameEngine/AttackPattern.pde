@@ -19,6 +19,7 @@ public abstract class AttackPattern {
   public void update() {
     if (finished && currentBullets.size() == 0) {
       empty = true;
+      return;
     }
     Iterator bulletIterator = currentBullets.iterator();
     
