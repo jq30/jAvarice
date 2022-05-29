@@ -3,19 +3,25 @@ import java.util.Iterator;
 
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();
-AttackSequence currentSequence = new SequenceB(300, 300);
+AttackSequence currentSequence;
 Sidebar sidebar;
-int playerHP = 5;
-int invulnerability = 60;
-Menu menu = new MainMenu();
-Menu pausemenu = new PauseMenu();
-GameState state = GameState.MENU;
+int playerHP, invulnerability;
+Menu menu, pausemenu;
+GameState state;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
 }
 
 void setup() {
+  player = new Player();
+  playerHP = 5;
+  invulnerability = 60;
+  menu = new MainMenu();
+  pausemenu = new PauseMenu();
+  state = GameState.MENU;
+  currentSequence = new SequenceB(width / 2, height / 2);
+  
   size(750, 750);
   sidebar = new Sidebar();
   noStroke();
@@ -80,6 +86,8 @@ void keyPressed() {
         pausemenu.executeCurrent();
       }
       break;
+    case OVER:
+      setup(); //not working, will work once i move everything into setup()
     default:
       break;
   }
