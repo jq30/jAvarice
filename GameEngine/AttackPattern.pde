@@ -107,3 +107,32 @@ public class SpinnyThing extends AttackPattern {
     }
   }
 }
+
+public class ThreeCluster extends AttackPattern {
+  int i;
+  
+  public ThreeCluster(float x, float y) {
+    super(x, y);
+    i = 0;
+  }
+  
+  public Bullet[] initBullets() {
+    i++;
+    if (i % 3 == 0) {
+      Bullet[] B = {
+        new Bullet(x, y, player.x, player.y, 2),
+        new Bullet(x, y, player.x - 20, player.y, 2),
+        new Bullet(x, y, player.x + 20, player.y, 2)
+      };
+      if (i == 9) {
+        finished = true;
+      }
+      for (Bullet b : B) {
+        currentBullets.add(b);
+      }
+      return B;
+    } else {
+      return null;
+    }
+  }
+}

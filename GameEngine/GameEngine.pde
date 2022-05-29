@@ -107,7 +107,7 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  currentSequence.attacks.add(new SpinnyThing(mouseX, mouseY));
+  currentSequence.attacks.add(new ThreeCluster(mouseX, mouseY));
 }
 
 void triggerHit() {
