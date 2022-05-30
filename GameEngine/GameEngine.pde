@@ -97,7 +97,15 @@ void keyPressed() {
       }
       break;
     case OVER:
-      setup(); //not working, will work once i move everything into setup()
+      //if any key pressed, reset (and return to title)
+      setup();
+    case DIALOGUE:
+      //if any key pressed:
+      if (dialogueEngine.hasNext()) {
+        dialogueEngine.next(); //advance the dialogue
+      } else {
+        state = GameState.PLAY; //return to playing mode
+      }
     default:
       break;
   }

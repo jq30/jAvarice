@@ -4,7 +4,8 @@ public class DialogueEngine {
   //we want fifo with this.
   
   DialogueBox[] dialogueOrder = {
-    new DialogueBox(null, "header", "text")
+    new DialogueBox(null, "header", "text"),
+    new DialogueBox(null, "uwu", "owo")
   };
   
   DialogueBox currentDialogue;
@@ -13,14 +14,14 @@ public class DialogueEngine {
     for (DialogueBox D : dialogueOrder) {
       dialogues.add(D);
     }
-    nextDialogue();
+    next();
   }
   
   public void display() {
     currentDialogue.display();
   }
   
-  public void nextDialogue() {
+  public void next() {
     currentDialogue = dialogues.remove();
   }
   
