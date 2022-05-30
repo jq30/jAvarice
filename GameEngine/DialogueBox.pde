@@ -1,8 +1,8 @@
 public class DialogueBox {
-  static final int xPos = ;
-  static final int yPos = ;
-  static final int boxWidth = ;
-  static final int boxHeight = ;
+  static final int xPos = 20;
+  static final int yPos = 500;
+  static final int boxWidth = 500;
+  static final int boxHeight = 200;
   
   PImage icon;
   String header;
@@ -15,9 +15,13 @@ public class DialogueBox {
   }
   
   public void display() {
+    stroke(0);
+    fill(255);
     rect(xPos, yPos, boxWidth, boxHeight);
-    rect(xPos, yPox, 60, 60); //stand-in for icon
-    text(header, xPos + 20, yPos + 20);
-    text(text, xPos + 20, yPos + 40);
+    rect(xPos - 10, yPos - 10, 120, 120); //stand-in for icon
+    noStroke();
+    fill(0);
+    text(header, xPos + 120, yPos + 20);
+    text(text, xPos + 120, yPos + 40);
   }
 }

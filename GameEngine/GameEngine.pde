@@ -8,6 +8,7 @@ AttackSequence currentSequence;
 Sidebar sidebar;
 int playerHP, invulnerability;
 Menu menu, pausemenu;
+DialogueEngine dialogueEngine;
 GameState state;
 
 enum GameState {
@@ -20,8 +21,9 @@ void setup() {
   invulnerability = 60;
   menu = new MainMenu();
   pausemenu = new PauseMenu();
-  state = GameState.MENU;
+  state = GameState.DIALOGUE;
   currentSequence = new SequenceB(width / 2, height / 2);
+  dialogueEngine = new DialogueEngine();
   
   size(750, 750);
   sidebar = new Sidebar();
@@ -49,6 +51,13 @@ void draw() {
     case PAUSED:
       pausemenu.display();
       break;
+    case DIALOGUE:
+      background(255);
+      player.display();
+      sidebar.display();
+      dialogueEngine.display();
+      break;
+      
   }
   text(frameRate, 20, height - 20);
 }

@@ -13,6 +13,7 @@ public class DialogueEngine {
     for (DialogueBox D : dialogueOrder) {
       dialogues.add(D);
     }
+    nextDialogue();
   }
   
   public void display() {
