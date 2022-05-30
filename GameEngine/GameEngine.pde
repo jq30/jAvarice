@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.Deque;
 
 boolean[] keysPressed = new boolean[128];
 Player player = new Player();

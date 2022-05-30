@@ -16,6 +16,7 @@ public class DialogueBox {
   
   public void display() {
     rect(xPos, yPos, boxWidth, boxHeight);
+    rect(xPos, yPox, 60, 60); //stand-in for icon
     text(header, xPos + 20, yPos + 20);
     text(text, xPos + 20, yPos + 40);
   }
