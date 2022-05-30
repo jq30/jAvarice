@@ -97,12 +97,12 @@ public class SpinnyThing extends AttackPattern {
     i++;
     if (i % 2 == 0) {
       Bullet[] B = {
-        new AngledBullet(x, y, 2, 60 + i),
-        new AngledBullet(x, y, 2, 120 + i),
-        new AngledBullet(x, y, 2, 180 + i),
-        new AngledBullet(x, y, 2, 240 + i),
-        new AngledBullet(x, y, 2, 300 + i),
-        new AngledBullet(x, y, 2, 360 + i)
+        new RadianBullet(x, y, 2, 60 + i),
+        new RadianBullet(x, y, 2, 120 + i),
+        new RadianBullet(x, y, 2, 180 + i),
+        new RadianBullet(x, y, 2, 240 + i),
+        new RadianBullet(x, y, 2, 300 + i),
+        new RadianBullet(x, y, 2, 360 + i)
       };
       if (i == 60) {
         finished = true;

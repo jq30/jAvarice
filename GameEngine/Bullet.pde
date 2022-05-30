@@ -34,8 +34,15 @@ public class Bullet {
   }
 }
 
-class AngledBullet extends Bullet {
-  public AngledBullet(float x, float y, float speed, float angle) {
+//angled bullets, note that java.lang.Math's trig functions take radian values
+class DegreeBullet extends Bullet {
+  public DegreeBullet(float x, float y, float speed, float angle) {
+    super(x, y, speed * (float)Math.cos(Math.toRadians(angle)), speed * (float)Math.sin(Math.toRadians(angle)));
+  }
+}
+
+class RadianBullet extends Bullet {
+  public RadianBullet(float x, float y, float speed, float angle) {
     super(x, y, speed * (float)Math.cos(angle), speed * (float)Math.sin(angle));
   }
 }
