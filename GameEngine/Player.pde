@@ -1,5 +1,6 @@
 public class Player {
-  float x, y;
+  float x = (width - Sidebar.barWidth) / 2;
+  float y = height * 3 / 4;
   float speed = 3;
   static final float hitboxRadius = 5f/2f;
   int xDirection = 0;
