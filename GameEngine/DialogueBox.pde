@@ -4,7 +4,7 @@ public class DialogueBox {
   static final int boxWidth = 500;
   static final int boxHeight = 200;
   
-  PImage icon;
+  PImage icon; //should be a 120px square
   String header;
   String text;
   
@@ -18,7 +18,7 @@ public class DialogueBox {
     stroke(0);
     fill(255);
     rect(xPos, yPos, boxWidth, boxHeight);
-    rect(xPos - 10, yPos - 10, 120, 120); //stand-in for icon
+    image(icon, xPos - 10, yPos - 10);
     noStroke();
     fill(0);
     text(header, xPos + 120, yPos + 20);

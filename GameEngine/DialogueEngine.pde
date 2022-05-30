@@ -4,8 +4,8 @@ public class DialogueEngine {
   //we want fifo with this.
   
   DialogueBox[] dialogueOrder = {
-    new DialogueBox(null, "header", "text"),
-    new DialogueBox(null, "uwu", "owo")
+    new DialogueBox(sprites.ericAdams, "Eric Adams", "ayo."),
+    new DialogueBox(sprites.ericAdams, "Eric Adams", "I'm cancelling your regents week.")
   };
   
   DialogueBox currentDialogue;

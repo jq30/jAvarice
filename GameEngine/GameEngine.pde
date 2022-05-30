@@ -8,15 +8,16 @@ AttackSequence currentSequence;
 Sidebar sidebar;
 int playerHP, invulnerability;
 Menu menu, pausemenu;
-DialogueEngine dialogueEngine;
 GameState state;
 GraphicsEngine sprites;
+DialogueEngine dialogueEngine;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
 }
 
 void setup() {
+  sprites = new GraphicsEngine();
   player = new Player();
   playerHP = 5;
   invulnerability = 60;
@@ -29,7 +30,6 @@ void setup() {
   size(750, 750);
   sidebar = new Sidebar();
   noStroke();
-  sprites = new GraphicsEngine();
 }
 
 void draw() {
