@@ -10,6 +10,7 @@ int playerHP, invulnerability;
 Menu menu, pausemenu;
 DialogueEngine dialogueEngine;
 GameState state;
+GraphicsEngine sprites;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -28,6 +29,7 @@ void setup() {
   size(750, 750);
   sidebar = new Sidebar();
   noStroke();
+  sprites = new GraphicsEngine();
 }
 
 void draw() {
