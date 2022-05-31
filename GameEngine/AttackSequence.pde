@@ -48,3 +48,18 @@ public class SequenceB extends AttackSequence {
     attacks.add(new SpinnyThing(x, y));
   }
 }
+
+public class DemoSequence extends AttackSequence {
+  public DemoSequence(float x, float y) {
+    AttackPattern[] A = {
+      new SpinnyThing(x, y),
+      new Pause(200),
+      new ABunchOfThreeClusters(20),
+      new Pause(400),
+      new ABunchOfThreeClusters(50)
+    };
+    for (AttackPattern a : A) {
+      attacks.add(a);
+    }
+  }
+}

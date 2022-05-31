@@ -139,3 +139,33 @@ public class ThreeCluster extends AttackPattern {
     }
   }
 }
+
+public class ABunchOfThreeClusters extends AttackPattern {
+  public ABunchOfThreeClusters(int n) {
+    super(0, 0);
+    for (int i = 0; i < n; i++) {
+      ThreeCluster TC = new ThreeCluster(random(600), random(300));
+      while (! TC.finished) {
+        TC.initBullets();
+      }
+      for (Bullet B : TC.currentBullets) {
+        currentBullets.add(B);
+      }
+    }
+  }
+  
+  public Bullet[] getBullets() {
+    finished = true;
+    return null;
+  }
+}
+
+public class Pause extends DelayedAttack {
+  public Pause(int f) {
+    super(0, 0, f);
+  }
+  
+  public Bullet[] getBullets() {
+    return null;
+  }
+}
