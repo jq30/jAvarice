@@ -62,6 +62,9 @@ void draw() {
       
   }
   text(frameRate, 20, height - 20);
+  for (DemoButton b : sidebar.buttons) {
+    b.display();
+  }
 }
 
 void keyPressed() {
@@ -127,7 +130,11 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  currentSequence.attacks.add(new ThreeCluster(mouseX, mouseY));
+  for (DemoButton button : sidebar.buttons) {
+    if (button.mouseHovering()) {
+      button.execute();
+    }
+  }
 }
 
 void triggerHit() {

@@ -15,4 +15,8 @@ public class Sidebar {
     text("HP", startDrawPos + 20, 20);
     text(playerHP, startDrawPos + 20, 40);
   }
+  
+  DemoButton[] buttons = {
+    new DialogueDemo("start dialogue", 600, 200, 100, 30)
+  };
 }
