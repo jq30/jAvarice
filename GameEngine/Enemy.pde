@@ -11,4 +11,12 @@ public class Enemy {
   public void chartCourse(float x, float y, int n) {
     
   }
+  
+  public void move() {
+    if (n > 0) {
+      x += xVel;
+      y += yVel;
+      n--;
+    }
+  }
 }
