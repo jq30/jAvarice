@@ -30,7 +30,7 @@ public class MainMenu extends Menu {
   private void init() {
     MenuItem[] mainMenuItems = {
       new StartItem("START", 40, 40),
-      new ExitItem("EXIT", 60, 60)
+      new ExitItem("EXIT", 40, 60)
     };
     menuItems = mainMenuItems;
   }
@@ -62,8 +62,8 @@ public class PauseMenu extends Menu {
   private void init() {
      MenuItem[] pauseMenuItems = {
       new StartItem("RESUME", 40, 40),
-      new TitleItem("SAVE AND QUIT", 60, 60),
-      new ResetItem("QUIT TO TITLE", 80, 80)
+      new TitleItem("SAVE AND QUIT", 40, 60),
+      new ResetItem("QUIT TO TITLE", 40, 80)
     };
     menuItems = pauseMenuItems;
   }

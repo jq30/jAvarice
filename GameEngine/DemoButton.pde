@@ -39,3 +39,13 @@ class DialogueDemo extends DemoButton {
     state = GameState.DIALOGUE;
   }
 }
+
+class AttackDemo extends DemoButton {
+  public AttackDemo(String t, int a, int b, int c, int d) {
+    super(t, a, b, c, d);
+  }
+  
+  public void execute() {
+    currentSequence = new DemoSequence(600 / 2, height / 2);
+  }
+}

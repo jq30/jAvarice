@@ -17,6 +17,7 @@ public class Sidebar {
   }
   
   DemoButton[] buttons = {
-    new DialogueDemo("start dialogue", 600, 200, 100, 30)
+    new DialogueDemo("start dialogue", 600, 200, 100, 30),
+    new AttackDemo("start attack", 600, 240, 100, 30)
   };
 }
