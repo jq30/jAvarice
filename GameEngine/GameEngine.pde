@@ -27,6 +27,7 @@ void setup() {
   pausemenu = new PauseMenu();
   state = GameState.MENU;
   dialogueEngine = new DialogueEngine();
+  currentSequence = null;
   
   size(750, 750);
   sidebar = new Sidebar();

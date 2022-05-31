@@ -46,6 +46,6 @@ class AttackDemo extends DemoButton {
   }
   
   public void execute() {
-    currentSequence = new DemoSequence(600 / 2, height / 2);
+    currentSequence = new DemoSequence(300, 100);
   }
 }
