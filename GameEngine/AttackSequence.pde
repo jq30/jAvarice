@@ -55,8 +55,14 @@ public class DemoSequence extends AttackSequence {
       new SpinnyThing(x, y),
       new Pause(200),
       new ABunchOfThreeClusters(20),
-      new Pause(400),
-      new ABunchOfThreeClusters(50)
+      new Pause(300),
+      new ABunchOfThreeClusters(50),
+      new Pause(500),
+      new Popcorn(100),
+      new Pause(650),
+      new ReversoThing(x, y),
+      new Pause(800),
+      new ConfusionThing(x, y)
     };
     for (AttackPattern a : A) {
       attacks.add(a);
