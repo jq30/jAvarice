@@ -11,12 +11,14 @@ Menu menu, pausemenu;
 GameState state;
 GraphicsEngine sprites;
 DialogueEngine dialogueEngine;
+int attackFrame;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
 }
 
 void setup() {
+  attackFrame = 0;
   sprites = new GraphicsEngine();
   player = new Player();
   playerHP = 5;
@@ -44,6 +46,7 @@ void draw() {
       currentSequence.update();
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
+      attackFrame++;
       break;
     case OVER:
       background(255);
