@@ -25,7 +25,7 @@ void setup() {
   invulnerability = 60;
   menu = new MainMenu();
   pausemenu = new PauseMenu();
-  state = GameState.DIALOGUE;
+  state = GameState.MENU;
   currentSequence = new DemoSequence(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
   
@@ -47,6 +47,7 @@ void draw() {
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
       attackFrame++;
+      drawButtons();
       break;
     case OVER:
       background(255);
@@ -65,9 +66,6 @@ void draw() {
       
   }
   text(frameRate, 20, height - 20);
-  for (DemoButton b : sidebar.buttons) {
-    b.display();
-  }
 }
 
 void keyPressed() {
@@ -147,5 +145,11 @@ void triggerHit() {
   }
   if (playerHP == 0) {
     state = GameState.OVER;
+  }
+}
+
+void drawButtons() {
+  for (DemoButton b : sidebar.buttons) {
+    b.display();
   }
 }
