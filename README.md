@@ -9,3 +9,5 @@ Wed | 5/25/22 | Started sidebar, small changes | Keep track of player health
 Thu | 5/26/22 | Finished player hit system, dying to be implemented | Menu system
 Fri | 5/27/22 | Main menu and start menu, also framework for other menus | Dialogue system
 Fri | 5/27/22 | Partially rewrote how AttackPatterns are coded |
+Sun | 5/29/22 | Added player sprite, reworked AttackPattern, small changes to menus |
+Mon | 5/30/22 | Small changes to various systems. Also dialogue boxes! | Completion of demo branch
