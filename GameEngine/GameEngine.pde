@@ -26,7 +26,6 @@ void setup() {
   menu = new MainMenu();
   pausemenu = new PauseMenu();
   state = GameState.MENU;
-  currentSequence = new DemoSequence(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
   
   size(750, 750);
@@ -43,7 +42,9 @@ void draw() {
       background(255);
       player.display();
       player.move();
-      currentSequence.update();
+      if (currentSequence != null) {
+        currentSequence.update();
+      }
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
       attackFrame++;
