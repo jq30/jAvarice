@@ -1,21 +1,34 @@
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.Deque;
 
 boolean[] keysPressed = new boolean[128];
-Player player = new Player();
-AttackSequence currentSequence = new SequenceB(300, 300);
+Player player;
+AttackSequence currentSequence;
 Sidebar sidebar;
-int playerHP = 5;
-int invulnerability = 60;
-Menu menu = new MainMenu();
-Menu pausemenu = new PauseMenu();
-GameState state = GameState.MENU;
+int playerHP, invulnerability;
+Menu menu, pausemenu;
+GameState state;
+GraphicsEngine sprites;
+DialogueEngine dialogueEngine;
+int attackFrame;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
 }
 
 void setup() {
+  attackFrame = 0;
+  sprites = new GraphicsEngine();
+  player = new Player();
+  playerHP = 5;
+  invulnerability = 60;
+  menu = new MainMenu();
+  pausemenu = new PauseMenu();
+  state = GameState.MENU;
+  currentSequence = new SequenceB(width / 2, height / 2);
+  dialogueEngine = new DialogueEngine();
+  
   size(750, 750);
   sidebar = new Sidebar();
   noStroke();
@@ -33,6 +46,7 @@ void draw() {
       currentSequence.update();
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
+      attackFrame++;
       break;
     case OVER:
       background(255);
@@ -42,6 +56,13 @@ void draw() {
     case PAUSED:
       pausemenu.display();
       break;
+    case DIALOGUE:
+      background(255);
+      player.display();
+      sidebar.display();
+      dialogueEngine.display();
+      break;
+      
   }
   text(frameRate, 20, height - 20);
 }
@@ -80,6 +101,16 @@ void keyPressed() {
         pausemenu.executeCurrent();
       }
       break;
+    case OVER:
+      //if any key pressed, reset (and return to title)
+      setup();
+    case DIALOGUE:
+      //if any key pressed:
+      if (dialogueEngine.hasNext()) {
+        dialogueEngine.next(); //advance the dialogue
+      } else {
+        state = GameState.PLAY; //return to playing mode
+      }
     default:
       break;
   }
@@ -99,7 +130,7 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  currentSequence.attacks.add(new SpinnyThing(mouseX, mouseY));
+  currentSequence.attacks.add(new ThreeCluster(mouseX, mouseY));
 }
 
 void triggerHit() {

@@ -39,7 +39,19 @@ public abstract class AttackPattern {
     }
   }
 
-  public abstract Bullet[] initBullets();
+  public void initBullets() {
+    Bullet[] bulletsToInit = getBullets();
+    
+    if (bulletsToInit == null) {
+      return;
+    }
+    
+    for (Bullet B : bulletsToInit) {
+      currentBullets.add(B);
+    }
+  }
+  
+  public abstract Bullet[] getBullets(); //returns the next set of bullets to add to squence. returns null if none. should only be called when ready.
 }
 
 public abstract class DelayedAttack extends AttackPattern {
@@ -47,12 +59,12 @@ public abstract class DelayedAttack extends AttackPattern {
   
   public DelayedAttack(float x, float y, int framesToWait) {
     super(x, y);
-    frameToWaitUntil = frameCount + framesToWait;
+    frameToWaitUntil = attackFrame + framesToWait;
   }
   
   @Override
   public boolean ready() {
-    return frameCount > frameToWaitUntil;
+    return attackFrame > frameToWaitUntil;
   }
 }
 
@@ -63,15 +75,12 @@ public class SingleAimedBullet extends AttackPattern {
     super(x, y);
   }
   
-  public Bullet[] initBullets() {
+  public Bullet[] getBullets() {
     Bullet[] B = {
       new Bullet(x, y, player.x, player.y, 1)
     };
     
     finished = true;
-    for (Bullet b : B) {
-      currentBullets.add(b);
-    }
     return B;
   }
 }
@@ -84,26 +93,49 @@ public class SpinnyThing extends AttackPattern {
     i = 0;
   }
   
-  public Bullet[] initBullets() {
+  public Bullet[] getBullets() {
     i++;
     if (i % 2 == 0) {
       Bullet[] B = {
-        new AngledBullet(x, y, 2, 60 + i),
-        new AngledBullet(x, y, 2, 120 + i),
-        new AngledBullet(x, y, 2, 180 + i),
-        new AngledBullet(x, y, 2, 240 + i),
-        new AngledBullet(x, y, 2, 300 + i),
-        new AngledBullet(x, y, 2, 360 + i)
+        new RadianBullet(x, y, 2, 60 + i),
+        new RadianBullet(x, y, 2, 120 + i),
+        new RadianBullet(x, y, 2, 180 + i),
+        new RadianBullet(x, y, 2, 240 + i),
+        new RadianBullet(x, y, 2, 300 + i),
+        new RadianBullet(x, y, 2, 360 + i)
       };
       if (i == 60) {
         finished = true;
       }
-      for (Bullet b : B) {
-        currentBullets.add(b);
-      }
       return B;
     } else {
       return new Bullet[0];
+    }
+  }
+}
+
+public class ThreeCluster extends AttackPattern {
+  int i;
+  
+  public ThreeCluster(float x, float y) {
+    super(x, y);
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    i++;
+    if (i % 3 == 0) {
+      Bullet[] B = {
+        new Bullet(x, y, player.x, player.y, 2),
+        new Bullet(x, y, player.x - 20, player.y, 2),
+        new Bullet(x, y, player.x + 20, player.y, 2)
+      };
+      if (i == 9) {
+        finished = true;
+      }
+      return B;
+    } else {
+      return null;
     }
   }
 }
