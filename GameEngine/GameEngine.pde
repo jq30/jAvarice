@@ -25,7 +25,7 @@ void setup() {
   invulnerability = 60;
   menu = new MainMenu();
   pausemenu = new PauseMenu();
-  state = GameState.DIALOGUE;
+  state = GameState.MENU;
   currentSequence = new SequenceB(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
   
