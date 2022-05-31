@@ -141,9 +141,17 @@ public class ThreeCluster extends AttackPattern {
 }
 
 public class ABunchOfThreeClusters extends AttackPattern {
+  int i;
+  int n;
+  
   public ABunchOfThreeClusters(int n) {
     super(0, 0);
-    for (int i = 0; i < n; i++) {
+    this.n = n;
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    if (i < n) {
       ThreeCluster TC = new ThreeCluster(random(600), random(300));
       while (! TC.finished) {
         TC.initBullets();
@@ -151,11 +159,10 @@ public class ABunchOfThreeClusters extends AttackPattern {
       for (Bullet B : TC.currentBullets) {
         currentBullets.add(B);
       }
+      i++;
+    } else {
+      finished = true;
     }
-  }
-  
-  public Bullet[] getBullets() {
-    finished = true;
     return null;
   }
 }
