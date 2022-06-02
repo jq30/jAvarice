@@ -11,4 +11,5 @@ Fri | 5/27/22 | Main menu and start menu, also framework for other menus | Dialo
 Fri | 5/27/22 | Partially rewrote how AttackPatterns are coded |
 Sun | 5/29/22 | Added player sprite, reworked AttackPattern, small changes to menus |
 Mon | 5/30/22 | Small changes to various systems. Also dialogue boxes! | Completion of demo branch
-Tue | 5/31/22 | Dialogue boxes, demo branch, begin work on enemy | 
+Tue | 5/31/22 | Dialogue boxes, demo branch, begin work on enemy |
+Wed | 6/01/22 | Stages framework or something, get started on background engine |
