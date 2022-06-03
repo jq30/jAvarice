@@ -45,6 +45,7 @@ void draw() {
       break;
     case PLAY:
       bgEngine.display(); //background(255);
+      bgEngine.scroll();
       player.display();
       player.move();
       //enemy.display();
