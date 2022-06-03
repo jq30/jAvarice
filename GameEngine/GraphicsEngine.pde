@@ -5,4 +5,5 @@ public class GraphicsEngine {
   PImage playerRight = loadImage("ImageLibrary/right.png");
   
   PImage ericAdams = loadImage("ImageLibrary/eric adams.png");
+  PImage tempBackground = loadImage("ImageLibrary/temp-bg.png");
 }
