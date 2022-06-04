@@ -6,4 +6,5 @@ public class GraphicsEngine {
   
   PImage ericAdams = loadImage("ImageLibrary/eric adams.png");
   PImage tempBackground = loadImage("ImageLibrary/temp-bg.png");
+  PImage tempBackgroundAlt = loadImage("ImageLibrary/temp-bg-reversed.png");
 }

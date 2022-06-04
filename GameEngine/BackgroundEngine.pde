@@ -11,7 +11,7 @@ public class BackgroundEngine {
     imageQueue = new LinkedList<PImage>();
     imageQueue.add(sprites.tempBackground);
     image0 = sprites.tempBackground;
-    image1 = sprites.tempBackground;
+    image1 = sprites.tempBackgroundAlt;
     n = 0;
     repeating = true;
     scrolling = true;
