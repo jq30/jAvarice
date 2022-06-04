@@ -1,17 +1,17 @@
 public class BackgroundEngine {
   Deque<PImage> imageQueue;
   PImage overlay; //nullable
-  PImage image0; //lower image
-  PImage image1; //upper image
+  PImage currentImage; //bottom image
+  PImage nextImage; //top image
   int n; //scroll variable
   boolean repeating;
   boolean scrolling;
   
   public BackgroundEngine() {
     imageQueue = new LinkedList<PImage>();
-    imageQueue.add(sprites.tempBackground);
-    image0 = sprites.tempBackground;
-    image1 = sprites.tempBackgroundAlt;
+    imageQueue.add(sprites.testBG);
+    currentImage = sprites.testBG;
+    nextImage = sprites.testBG;
     n = 0;
     repeating = true;
     scrolling = true;
@@ -24,26 +24,26 @@ public class BackgroundEngine {
     if (overlay != null) {
       image(overlay, 0, 0);
     }
-    image(image0, 0, n);
-    image(image1, 0, n - 800); //800 represents image height
+    image(currentImage, 0, n);
+    image(nextImage, 0, n - 800); //800 represents image height
   }
   
   public void scroll() {
-    n++;
-    if (n > 800) { //800 = image height
+    n += 2;
+    if (n >= 800) { //800 = image height
       //reached end
       if (repeating) {
         n = 0; //this resets the position of the two images
-        imageQueue.add(image0); //recycle this image
-        image0 = image1; //top image has now replaced the bottom image
-        image1 = imageQueue.remove();
+        imageQueue.add(currentImage); //recycle this image
+        currentImage = nextImage; //top image has now replaced the bottom image
+        nextImage = imageQueue.remove();
       } else {
         n = 0;
-        image0 = image1;
+        currentImage = nextImage;
         if (imageQueue.size() == 0) {
           scrolling = false; //stop scroll
         } else {
-          image1 = imageQueue.remove();
+          nextImage = imageQueue.remove();
         }
       }
     }
