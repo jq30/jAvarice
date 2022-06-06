@@ -12,6 +12,8 @@ GameState state;
 GraphicsEngine sprites;
 DialogueEngine dialogueEngine;
 int attackFrame;
+//Enemy enemy;
+BackgroundEngine bgEngine;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -28,6 +30,8 @@ void setup() {
   state = GameState.MENU;
   currentSequence = new SequenceB(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
+  //enemy = new Enemy();
+  bgEngine = new BackgroundEngine();
   
   size(750, 750);
   sidebar = new Sidebar();
@@ -40,9 +44,11 @@ void draw() {
       menu.display();
       break;
     case PLAY:
-      background(255);
+      bgEngine.display(); //background(255);
       player.display();
       player.move();
+      //enemy.display();
+      //enemy.move();
       currentSequence.update();
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
