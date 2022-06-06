@@ -9,9 +9,8 @@ public class BackgroundEngine {
   
   public BackgroundEngine() {
     imageQueue = new LinkedList<PImage>();
-    imageQueue.add(sprites.testBG);
-    currentImage = sprites.testBG;
-    nextImage = sprites.testBG;
+    currentImage = sprites.adamzzz;
+    nextImage = sprites.adamyyy;
     n = 0;
     repeating = true;
     scrolling = true;

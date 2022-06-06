@@ -9,4 +9,6 @@ public class GraphicsEngine {
   PImage tempBackgroundAlt = loadImage("ImageLibrary/temp-bg-reversed.png");
   
   PImage testBG = loadImage("ImageLibrary/test-bg.png");
+  PImage adamzzz = loadImage("ImageLibrary/ericadamsorzzzz.png");
+  PImage adamyyy = loadImage("ImageLibrary/ericadamsorzzzzalt.png");
 }
