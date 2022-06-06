@@ -1,4 +1,4 @@
-public abstract class AttackSequence {
+public abstract class AttackSequence implements Event {
   //this linkedlist serves as both list and queue.
   //loop through the list, executing attackpatterns, and if the next one isn't ready, end early.
   LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
@@ -19,6 +19,10 @@ public abstract class AttackSequence {
         a.update();
       }
     }
+  }
+  
+  public boolean finished() {
+    return attacks.size() != 0;
   }
 }
 
