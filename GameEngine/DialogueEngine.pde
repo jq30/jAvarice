@@ -1,20 +1,10 @@
 //this is responsible for all dialogue
 public class DialogueEngine {
-  Deque<DialogueBox> dialogues = new LinkedList<DialogueBox>(); //woefully unapologetic for using linkedlist for everything
-  //we want fifo with this.
-  
-  DialogueBox[] dialogueOrder = {
-    new DialogueBox(sprites.ericAdams, "Eric Adams", "ayo."),
-    new DialogueBox(sprites.ericAdams, "Eric Adams", "I'm cancelling your regents week.")
-  };
-  
+  Deque<DialogueBox> dialogues; //we want fifo with this.
   DialogueBox currentDialogue;
   
   public DialogueEngine() {
-    for (DialogueBox D : dialogueOrder) {
-      dialogues.add(D);
-    }
-    next();
+    dialogues = new LinkedList<DialogueBox>(); //woefully unapologetic for using linkedlist for everything
   }
   
   public void display() {
@@ -27,5 +17,21 @@ public class DialogueEngine {
   
   public boolean hasNext() {
     return !(dialogues.size() == 0);
+  }
+}
+
+public class Dialogue implements Event {
+  public Dialogue(DialogueBox[] D) {
+    for (DialogueBox d : D) {
+      dialogueEngine.dialogues.add(d);
+    }
+  }
+  
+  public boolean finished() {
+    return ! dialogueEngine.hasNext();
+  }
+  
+  public void start() {
+    state = GameState.DIALOGUE;
   }
 }

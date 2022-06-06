@@ -14,6 +14,7 @@ DialogueEngine dialogueEngine;
 int attackFrame;
 //Enemy enemy;
 BackgroundEngine bgEngine;
+Stage currentStage;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -28,10 +29,10 @@ void setup() {
   menu = new MainMenu();
   pausemenu = new PauseMenu();
   state = GameState.MENU;
-  currentSequence = new SequenceB(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
   //enemy = new Enemy();
   bgEngine = new BackgroundEngine();
+  currentStage = new Stage1();
   
   size(750, 750);
   sidebar = new Sidebar();
@@ -49,7 +50,7 @@ void draw() {
       player.move();
       //enemy.display();
       //enemy.move();
-      currentSequence.update();
+      if (currentSequence != null) { currentSequence.update(); }
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
       attackFrame++;
@@ -133,10 +134,6 @@ void keyReleased() {
      default:
        break;
   }
-}
-
-void mousePressed() {
-  currentSequence.attacks.add(new ThreeCluster(mouseX, mouseY));
 }
 
 void triggerHit() {
