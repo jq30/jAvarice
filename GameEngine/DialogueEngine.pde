@@ -1,18 +1,19 @@
 //this is responsible for all dialogue
 public class DialogueEngine {
   Deque<DialogueBox> dialogues; //we want fifo with this.
-  DialogueBox currentDialogue;
   
   public DialogueEngine() {
     dialogues = new LinkedList<DialogueBox>(); //woefully unapologetic for using linkedlist for everything
   }
   
   public void display() {
-    currentDialogue.display();
+    if (hasNext()) {
+      dialogues.peek().display();
+    }
   }
   
   public void next() {
-    currentDialogue = dialogues.remove();
+    dialogues.remove();
   }
   
   public boolean hasNext() {
