@@ -22,21 +22,23 @@ public class DialogueEngine {
 }
 
 public class Dialogue implements Event {
+  boolean enqueued;
   DialogueBox[] D;
   
   public Dialogue(DialogueBox[] _D) {
     D = _D;
-    println("constructor call");
+    enqueued = false;
   }
   
   public boolean finished() {
-    return ! dialogueEngine.hasNext();
+    return enqueued && ! dialogueEngine.hasNext();
   }
   
   public void start() {
     for (DialogueBox d : D) {
       dialogueEngine.dialogues.add(d);
     }
+    enqueued = true;
     state = GameState.DIALOGUE;
     println("start dialogue");
   }

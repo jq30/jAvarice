@@ -12,9 +12,15 @@ public class EventManager {
     new DialogueBox(sprites.ericAdams, "sdaogj", "ughhhhh")
   };
   
+  DialogueBox[] dialogue2 = {
+    new DialogueBox(sprites.ericAdams, "eric adams", "no regents week pour toi."),
+    new DialogueBox(sprites.tempPFP, "person", "um what..?")
+  };
+  
   Event[] events = {
     new Dialogue(dialogue1),
-    new SequenceB(0, 0)
+    new SequenceB(0, 0),
+    new Dialogue(dialogue2)
   };
   
   public EventManager() {
@@ -28,10 +34,8 @@ public class EventManager {
   }
   
   public void next() {
-    println("removed: " + eventQueue.remove());
+    eventQueue.remove();
     eventQueue.peek().start();
-    println(eventQueue.peek());
-    println(eventQueue);
   }
   
   public void update() {
