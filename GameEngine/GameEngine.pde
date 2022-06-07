@@ -65,7 +65,7 @@ void draw() {
       pausemenu.display();
       break;
     case DIALOGUE:
-      background(255);
+      bgEngine.display();
       player.display();
       sidebar.display();
       dialogueEngine.display();
