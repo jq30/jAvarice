@@ -22,10 +22,11 @@ public class DialogueEngine {
 }
 
 public class Dialogue implements Event {
-  public Dialogue(DialogueBox[] D) {
-    for (DialogueBox d : D) {
-      dialogueEngine.dialogues.add(d);
-    }
+  DialogueBox[] D;
+  
+  public Dialogue(DialogueBox[] _D) {
+    D = _D;
+    println("constructor call");
   }
   
   public boolean finished() {
@@ -33,6 +34,10 @@ public class Dialogue implements Event {
   }
   
   public void start() {
+    for (DialogueBox d : D) {
+      dialogueEngine.dialogues.add(d);
+    }
     state = GameState.DIALOGUE;
+    println("start dialogue");
   }
 }

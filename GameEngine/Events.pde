@@ -28,12 +28,13 @@ public class EventManager {
   }
   
   public void next() {
-    eventQueue.remove();
+    println("removed: " + eventQueue.remove());
     eventQueue.peek().start();
+    println(eventQueue.peek());
+    println(eventQueue);
   }
   
   public void update() {
-    println(eventQueue);
     if (eventQueue.peek().finished()) {
       next();
     }
