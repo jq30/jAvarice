@@ -22,7 +22,7 @@ public abstract class AttackSequence implements Event {
   }
   
   public boolean finished() {
-    return attacks.size() != 0;
+    return attacks.size() == 0;
   }
   
   public void start() {

@@ -40,6 +40,7 @@ void setup() {
 }
 
 void draw() {
+  events.update();
   switch (state) {
     case MENU:
       menu.display();

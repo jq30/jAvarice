@@ -19,6 +19,7 @@ public class EventManager {
   
   public EventManager() {
     init(events);
+    eventQueue.peek().start();
   }
   
   public void init(Event[] events) {
@@ -30,5 +31,12 @@ public class EventManager {
   public void next() {
     eventQueue.remove();
     eventQueue.peek().start();
+  }
+  
+  public void update() {
+    println(eventQueue);
+    if (eventQueue.peek().finished()) {
+      next();
+    }
   }
 }
