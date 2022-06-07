@@ -14,7 +14,7 @@ DialogueEngine dialogueEngine;
 int attackFrame;
 //Enemy enemy;
 BackgroundEngine bgEngine;
-Stage currentStage;
+EventManager events;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -32,7 +32,7 @@ void setup() {
   dialogueEngine = new DialogueEngine();
   //enemy = new Enemy();
   bgEngine = new BackgroundEngine();
-  currentStage = new Stage1();
+  events = new EventManager();
   
   size(750, 750);
   sidebar = new Sidebar();
