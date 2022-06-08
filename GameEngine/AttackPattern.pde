@@ -65,7 +65,12 @@ public abstract class DelayedAttack extends AttackPattern {
   
   @Override
   public boolean ready() {
-    return attackFrame > frameToWaitUntil;
+    if (attackFrame > frameToWaitUntil) {
+      empty = true; //mark self for deletion
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
