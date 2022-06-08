@@ -19,7 +19,7 @@ public class EventManager {
   
   Event[] events = {
     new Dialogue(dialogue1),
-    new SequenceB(0, 0),
+    new SequenceB(),
     new Dialogue(dialogue2)
   };
   

@@ -11,8 +11,8 @@ Menu menu, pausemenu;
 GameState state;
 GraphicsEngine sprites;
 DialogueEngine dialogueEngine;
-int attackFrame;
-//Enemy enemy;
+int attackFrame; //keeps track of how many frames of attacking-ness has gone by
+Enemy enemy;
 BackgroundEngine bgEngine;
 EventManager events;
 
@@ -30,7 +30,7 @@ void setup() {
   pausemenu = new PauseMenu();
   state = GameState.MENU;
   dialogueEngine = new DialogueEngine();
-  //enemy = new Enemy();
+  enemy = new Enemy();
   bgEngine = new BackgroundEngine();
   events = new EventManager();
   
@@ -49,8 +49,10 @@ void draw() {
       bgEngine.display(); //background(255);
       player.display();
       player.move();
-      //enemy.display();
-      //enemy.move();
+      if (enemy != null) {
+        enemy.display();
+        enemy.move();
+      }
       if (currentSequence != null) { currentSequence.update(); }
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }

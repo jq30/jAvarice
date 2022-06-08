@@ -77,7 +77,7 @@ public class SingleAimedBullet extends AttackPattern {
   
   public Bullet[] getBullets() {
     Bullet[] B = {
-      new Bullet(x, y, player.x, player.y, 1)
+      new AimedBullet(x, y, player.x, player.y, 1)
     };
     
     finished = true;
@@ -126,9 +126,9 @@ public class ThreeCluster extends AttackPattern {
     i++;
     if (i % 3 == 0) {
       Bullet[] B = {
-        new Bullet(x, y, player.x, player.y, 2),
-        new Bullet(x, y, player.x - 20, player.y, 2),
-        new Bullet(x, y, player.x + 20, player.y, 2)
+        new AimedBullet(x, y, player.x, player.y, 2),
+        new AimedBullet(x, y, player.x - 20, player.y, 2),
+        new AimedBullet(x, y, player.x + 20, player.y, 2)
       };
       if (i == 9) {
         finished = true;
@@ -137,5 +137,17 @@ public class ThreeCluster extends AttackPattern {
     } else {
       return null;
     }
+  }
+}
+
+public class Wait extends DelayedAttack {
+  //this is an "attack pattern" that waits a certain amounts of frames before doing nothing
+  //think of a break in a music sheet or something idk
+  public Wait(int frames) {
+    super(0, 0, frames);
+  }
+  
+  public Bullet[] getBullets() {
+    return null;
   }
 }
