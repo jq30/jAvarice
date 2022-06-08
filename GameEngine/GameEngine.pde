@@ -11,9 +11,11 @@ Menu menu, pausemenu;
 GameState state;
 GraphicsEngine sprites;
 DialogueEngine dialogueEngine;
-int attackFrame;
-//Enemy enemy;
+int attackFrame; //keeps track of how many frames of attacking-ness has gone by
+Enemy enemy;
 BackgroundEngine bgEngine;
+EventManager events;
+int delayedAttackTimer;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -21,6 +23,7 @@ enum GameState {
 
 void setup() {
   attackFrame = 0;
+  delayedAttackTimer = 0;
   sprites = new GraphicsEngine();
   player = new Player();
   playerHP = 5;
@@ -28,10 +31,10 @@ void setup() {
   menu = new MainMenu();
   pausemenu = new PauseMenu();
   state = GameState.MENU;
-  currentSequence = new SequenceB(width / 2, height / 2);
   dialogueEngine = new DialogueEngine();
-  //enemy = new Enemy();
+  enemy = new Enemy();
   bgEngine = new BackgroundEngine();
+  events = new EventManager();
   
   size(750, 750);
   sidebar = new Sidebar();
@@ -39,6 +42,7 @@ void setup() {
 }
 
 void draw() {
+  events.update();
   switch (state) {
     case MENU:
       menu.display();
@@ -47,9 +51,11 @@ void draw() {
       bgEngine.display(); //background(255);
       player.display();
       player.move();
-      //enemy.display();
-      //enemy.move();
-      currentSequence.update();
+      if (enemy != null) {
+        enemy.display();
+        enemy.move();
+      }
+      if (currentSequence != null) { currentSequence.update(); }
       sidebar.display();
       if (--invulnerability < 0) { invulnerability = 0; }
       attackFrame++;
@@ -63,7 +69,7 @@ void draw() {
       pausemenu.display();
       break;
     case DIALOGUE:
-      background(255);
+      bgEngine.display();
       player.display();
       sidebar.display();
       dialogueEngine.display();
@@ -135,8 +141,8 @@ void keyReleased() {
   }
 }
 
-void mousePressed() {
-  currentSequence.attacks.add(new ThreeCluster(mouseX, mouseY));
+void mouseClicked() {
+  println("mouse clicked @ " + mouseX + ", " + mouseY);
 }
 
 void triggerHit() {

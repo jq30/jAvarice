@@ -55,4 +55,8 @@ public class BackgroundEngine {
   public void removeOverlay() {
     overlay = null;
   }
+  
+  public void clearQueue() {
+    imageQueue = new LinkedList<PImage>();
+  }
 }

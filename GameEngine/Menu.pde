@@ -119,6 +119,7 @@ public class StartItem extends MenuItem {
   public void execute() {
     keysPressed = new boolean[128];
     state = GameState.PLAY;
+    events.eventQueue.peek().start();
   }
 }
 
@@ -148,6 +149,6 @@ public class ResetItem extends MenuItem {
   }
   
   public void execute() {
-    setup(); //not working atm, will work when everything is placed in setup()
+    setup();
   }
 }
