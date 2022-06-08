@@ -21,10 +21,10 @@ public abstract class AttackPattern {
       empty = true;
       return;
     }
-    Iterator bulletIterator = currentBullets.iterator();
+    Iterator<Bullet> bulletIterator = currentBullets.iterator();
     
     while (bulletIterator.hasNext()) {
-      Bullet b = (Bullet)bulletIterator.next();
+      Bullet b = bulletIterator.next();
       if (b.offScreen()) {
         bulletIterator.remove();
       } else {
@@ -59,7 +59,8 @@ public abstract class DelayedAttack extends AttackPattern {
   
   public DelayedAttack(float x, float y, int framesToWait) {
     super(x, y);
-    frameToWaitUntil = attackFrame + framesToWait;
+    delayedAttackTimer += framesToWait;
+    frameToWaitUntil = attackFrame + delayedAttackTimer;
   }
   
   @Override

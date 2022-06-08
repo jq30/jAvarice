@@ -4,9 +4,9 @@ public abstract class AttackSequence implements Event {
   LinkedList<AttackPattern> attacks = new LinkedList<AttackPattern>();
 
   public void update() {    
-    Iterator it = attacks.iterator();
+    Iterator<AttackPattern> it = attacks.iterator();
     while (it.hasNext()) {
-      AttackPattern a = (AttackPattern)it.next();
+      AttackPattern a = it.next();
       if (! a.ready()) {
         break;
       }
@@ -39,5 +39,9 @@ public class SequenceB extends AttackSequence {
     attacks.add(new SpinnyThing(600, 0));
     attacks.add(new Wait(200));
     attacks.add(new SpinnyThing(300, 100));
+    attacks.add(new Wait(200));
+    attacks.add(new SpinnyThing(259, 253));
+    attacks.add(new SpinnyThing(65, 46));
+    attacks.add(new SpinnyThing(269, 175));
   }
 }

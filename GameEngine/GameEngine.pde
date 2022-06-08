@@ -15,6 +15,7 @@ int attackFrame; //keeps track of how many frames of attacking-ness has gone by
 Enemy enemy;
 BackgroundEngine bgEngine;
 EventManager events;
+int delayedAttackTimer;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER
@@ -22,6 +23,7 @@ enum GameState {
 
 void setup() {
   attackFrame = 0;
+  delayedAttackTimer = 0;
   sprites = new GraphicsEngine();
   player = new Player();
   playerHP = 5;
@@ -137,6 +139,10 @@ void keyReleased() {
      default:
        break;
   }
+}
+
+void mouseClicked() {
+  println("mouse clicked @ " + mouseX + ", " + mouseY);
 }
 
 void triggerHit() {
