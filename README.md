@@ -15,3 +15,4 @@ Tue | 5/31/22 | Dialogue boxes, demo branch, begin work on enemy |
 Wed | 6/01/22 | Stages framework or something, get started on background engine |
 Fri | 6/03/22 | Finished background engine |
 Mon | 6/06/22 | Started event manager |
+Tue | 6/07/22 | Finished event manager |
