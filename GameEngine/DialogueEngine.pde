@@ -40,6 +40,5 @@ public class Dialogue implements Event {
     }
     enqueued = true;
     state = GameState.DIALOGUE;
-    println("start dialogue");
   }
 }
