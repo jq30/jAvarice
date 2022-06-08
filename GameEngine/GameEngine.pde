@@ -77,7 +77,6 @@ void draw() {
       
   }
   text(frameRate, 20, height - 20);
-  println(currentSequence == null ? "null" : currentSequence.attacks);
 }
 
 void keyPressed() {

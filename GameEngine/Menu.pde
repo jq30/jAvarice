@@ -149,6 +149,6 @@ public class ResetItem extends MenuItem {
   }
   
   public void execute() {
-    setup(); //not working atm, will work when everything is placed in setup()
+    setup();
   }
 }

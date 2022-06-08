@@ -6,21 +6,8 @@ public interface Event {
 public class EventManager {
   Deque<Event> eventQueue = new LinkedList<Event>();
   
-  DialogueBox[] dialogue1 = {
-    new DialogueBox(sprites.ericAdams, "uwu", "thing"),
-    new DialogueBox(sprites.ericAdams, "aaaa", "more thing"),
-    new DialogueBox(sprites.ericAdams, "sdaogj", "ughhhhh")
-  };
-  
-  DialogueBox[] dialogue2 = {
-    new DialogueBox(sprites.ericAdams, "eric adams", "no regents week pour toi."),
-    new DialogueBox(sprites.tempPFP, "person", "um what..?")
-  };
-  
   Event[] events = {
-    new Dialogue(dialogue1),
-    new SequenceB(),
-    new Dialogue(dialogue2)
+    new EndEvent()
   };
   
   public EventManager() {
@@ -42,5 +29,15 @@ public class EventManager {
     if (eventQueue.peek().finished()) {
       next();
     }
+  }
+}
+
+public class EndEvent implements Event {
+  public void start() {
+    state = GameState.OVER;
+  }
+  
+  public boolean finished() {
+    return false;
   }
 }
