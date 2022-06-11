@@ -36,7 +36,7 @@ public class EventManager {
 
 public class EndEvent implements Event {
   public void start() {
-    state = GameState.OVER;
+    state = GameState.END;
   }
   
   public boolean finished() {

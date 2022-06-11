@@ -19,7 +19,7 @@ int delayedAttackTimer;
 boolean invulnerabilityCheat;
 
 enum GameState {
-  MENU, PLAY, PAUSED, DIALOGUE, OVER, CHEAT
+  MENU, PLAY, PAUSED, DIALOGUE, OVER, CHEAT, END
 }
 
 void setup() {
@@ -80,6 +80,11 @@ void draw() {
     case CHEAT:
       cheatmenu.display();
       break;
+    case END:
+      background(255);
+      fill(0);
+      text("THE END or something..", 300, 300);
+      break;
   }
   text(frameRate, 20, height - 20);
 }
@@ -139,7 +144,8 @@ void keyPressed() {
         cheatmenu.executeCurrent();
       }
       break;
-    default:
+    case END:
+      setup();
       break;
   }
 }
