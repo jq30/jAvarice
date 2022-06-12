@@ -91,7 +91,6 @@ void draw() {
       text("THE END (or something...)", 300, 300);
       break;
   }
-  text(frameRate, 20, height - 20);
 }
 
 void keyPressed() {
