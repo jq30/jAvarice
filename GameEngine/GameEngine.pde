@@ -138,6 +138,7 @@ void keyPressed() {
       } else {
         state = GameState.PLAY; //return to playing mode
       }
+      break;
     case CHEAT:
       if (keyCode == UP) {
         cheatmenu.prev();
