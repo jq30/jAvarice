@@ -53,6 +53,22 @@ public class Confetti extends AttackSequence {
     attacks.add(new Wait(100));
     attacks.add(new Popcorn(200));
     attacks.add(new Wait(100));
-    attacks.add(new Popcorn(400));
+    attacks.add(new Popcorn(200));
+  }
+}
+
+public class Explosion extends AttackSequence {
+  public Explosion() {
+    attacks.add(new ConfusionThing(300, 100));
+  }
+}
+
+public class Sprrr extends AttackSequence {
+  public Sprrr() {
+    attacks.add(new ReversoThing(300, 100));
+    attacks.add(new Wait(200));
+    attacks.add(new Wait(100));
+    attacks.add(new ReversoThing(0, 0));
+    attacks.add(new ReversoThing(width, 0));
   }
 }

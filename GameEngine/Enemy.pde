@@ -7,7 +7,7 @@ public class Enemy {
     x = 300;
     y = -50; //enemy spawns in middle offscreen
     n = 0;
-    chartCourse(x, 100, 200);
+    chartCourse(x, 100, 100);
   }
   
   //move to specified location. we are given n frames to do so.

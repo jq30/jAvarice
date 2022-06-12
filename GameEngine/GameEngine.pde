@@ -88,7 +88,7 @@ void draw() {
     case END:
       background(255);
       fill(0);
-      text("THE END or something..", 300, 300);
+      text("THE END (or something...)", 300, 300);
       break;
   }
   text(frameRate, 20, height - 20);
