@@ -131,11 +131,13 @@ void keyPressed() {
     case OVER:
       //if any key pressed, reset (and return to title)
       setup();
+      break;
     case DIALOGUE:
       //if any key pressed:
       if (dialogueEngine.hasNext()) {
         dialogueEngine.next(); //advance the dialogue
       } else {
+        keysPressed = new boolean[128]; //clear keystrokes
         state = GameState.PLAY; //return to playing mode
       }
       break;
