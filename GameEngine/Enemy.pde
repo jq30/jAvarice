@@ -7,7 +7,7 @@ public class Enemy {
     x = 300;
     y = -50; //enemy spawns in middle offscreen
     n = 0;
-    chartCourse(300, 300, 240);
+    chartCourse(x, 100, 100);
   }
   
   //move to specified location. we are given n frames to do so.
@@ -27,6 +27,6 @@ public class Enemy {
   
   public void display() {
     fill(120);
-    rect(x - 15, y - 30, 30, 60); //placeholder
+    image(sprites.orbModel, x - 30, y - 30);
   }
 }

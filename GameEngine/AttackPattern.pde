@@ -60,7 +60,7 @@ public abstract class DelayedAttack extends AttackPattern {
   public DelayedAttack(float x, float y, int framesToWait) {
     super(x, y);
     delayedAttackTimer += framesToWait;
-    frameToWaitUntil = attackFrame + delayedAttackTimer;
+    frameToWaitUntil = delayedAttackTimer;
   }
   
   @Override
@@ -155,5 +155,126 @@ public class Wait extends DelayedAttack {
   
   public Bullet[] getBullets() {
     return null;
+  }
+}
+
+
+public class ABunchOfThreeClusters extends AttackPattern {
+  int i;
+  int n;
+  
+  public ABunchOfThreeClusters(int n) {
+    super(0, 0);
+    this.n = n;
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    if (i < n) {
+      ThreeCluster TC = new ThreeCluster(random(600), random(300));
+      while (! TC.finished) {
+        TC.initBullets();
+      }
+      for (Bullet B : TC.currentBullets) {
+        currentBullets.add(B);
+      }
+      i++;
+    } else {
+      finished = true;
+    }
+    return null;
+  }
+}
+
+public class Popcorn extends AttackPattern {
+  int n;
+  float i;
+  
+  public Popcorn(int n) {
+    super(0, 0);
+    this.n = n;
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    Bullet[] bulletArray = new Bullet[n];
+    for (int k = 0; k < n; k++) {
+      bulletArray[k] = new DegreeBullet(random(600), random(200), 1, random(180, 360));
+    }
+    finished = true;
+    return bulletArray;
+  }
+  
+  public void update() {
+    super.update();
+    for (Bullet B : currentBullets) {
+      B.y += i;
+    }
+    i += 0.05;
+  }
+}
+
+public class ReversoThing extends AttackPattern {
+  int i;
+  
+  public ReversoThing(float x, float y) {
+    super(x, y);
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    if (i > 200) {
+      finished = true;
+      return null;
+    }
+    
+    Bullet[] B = {
+      new RadianBullet(x, y, 3, 0 + i),
+      new RadianBullet(x, y, 3, 120 + i),
+      new RadianBullet(x, y, 3, 240 + i)
+    };
+    i += 2;
+    return B;
+  }
+  
+  public void update() {
+    super.update();
+    for (Bullet B : currentBullets) {
+      B.yVel += 0.05;
+    }
+  }
+}
+
+public class ConfusionThing extends AttackPattern {
+  int i = 0;
+  
+  public ConfusionThing(float x, float y) {
+    super(x, y);
+    i = 0;
+  }
+  
+  public Bullet[] getBullets() {
+    if (i > 100) {
+      finished = true;
+      return null;
+    }
+    
+    Bullet[] B = {
+      new RadianBullet(x, y, 2, 0 + i),
+      new RadianBullet(x, y, 2, 90 + i),
+      new RadianBullet(x, y, 2, 180 + i),
+      new RadianBullet(x, y, 2, 270 + i)
+    };
+    i++;
+    return B;
+  }
+  
+  public void update() {
+    super.update();
+    for (Bullet B : currentBullets) {
+      if (i % 2 == 0) {
+        B.xVel *= -1;
+      }
+    }
   }
 }

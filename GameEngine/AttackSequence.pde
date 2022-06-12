@@ -28,6 +28,7 @@ public abstract class AttackSequence implements Event {
   public void start() {
     currentSequence = this;
     state = GameState.PLAY;
+    delayedAttackTimer = 0;
   }
 }
 
@@ -42,6 +43,32 @@ public class SequenceB extends AttackSequence {
     attacks.add(new Wait(200));
     attacks.add(new SpinnyThing(259, 253));
     attacks.add(new SpinnyThing(65, 46));
-    attacks.add(new SpinnyThing(269, 175));
+    attacks.add(new SpinnyThing(369, 175));
+  }
+}
+
+public class Confetti extends AttackSequence {
+  public Confetti() {
+    attacks.add(new Popcorn(100));
+    attacks.add(new Wait(100));
+    attacks.add(new Popcorn(200));
+    attacks.add(new Wait(100));
+    attacks.add(new Popcorn(200));
+  }
+}
+
+public class Explosion extends AttackSequence {
+  public Explosion() {
+    attacks.add(new ConfusionThing(300, 100));
+  }
+}
+
+public class Sprrr extends AttackSequence {
+  public Sprrr() {
+    attacks.add(new ReversoThing(300, 100));
+    attacks.add(new Wait(200));
+    attacks.add(new Wait(100));
+    attacks.add(new ReversoThing(0, 0));
+    attacks.add(new ReversoThing(width, 0));
   }
 }
