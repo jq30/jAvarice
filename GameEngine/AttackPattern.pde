@@ -60,7 +60,7 @@ public abstract class DelayedAttack extends AttackPattern {
   public DelayedAttack(float x, float y, int framesToWait) {
     super(x, y);
     delayedAttackTimer += framesToWait;
-    frameToWaitUntil = attackFrame + delayedAttackTimer;
+    frameToWaitUntil = delayedAttackTimer;
   }
   
   @Override

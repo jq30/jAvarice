@@ -35,7 +35,7 @@ void setup() {
   cheatmenu = new CheatMenu();
   state = GameState.MENU;
   dialogueEngine = new DialogueEngine();
-  enemy = new Enemy();
+  enemy = null;
   bgEngine = new BackgroundEngine();
   events = new EventManager();
   invulnerabilityCheat = false;
@@ -74,6 +74,10 @@ void draw() {
       break;
     case DIALOGUE:
       bgEngine.display();
+      if (enemy != null) {
+        enemy.display();
+        enemy.move();
+      }
       player.display();
       sidebar.display();
       dialogueEngine.display();

@@ -8,7 +8,8 @@ public class EventManager {
   
   Event[] events = {
     new WaitEvent(200),
-    new SequenceB(),
+    new Confetti(),
+    new IntroduceEnemy(),
     new Dialogue(new DialogueBox[] {
       new HeadlessDialogueBox("Unnamed Protagonist", "Huh? Who's there?"),
       new DialogueBox(sprites.orb, "Glowing Orb", ""),
@@ -56,5 +57,15 @@ public class WaitEvent extends AttackSequence {
   //is actually just an empty attack under the hood
   public WaitEvent(int frames) {
     attacks.add(new Wait(frames));
+  }
+}
+
+public class IntroduceEnemy implements Event {
+  public void start() {
+    enemy = new Enemy();
+  }
+  
+  public boolean finished() {
+    return true; //finishes instantly
   }
 }
