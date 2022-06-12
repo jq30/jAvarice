@@ -10,8 +10,13 @@ public class EventManager {
     new WaitEvent(200),
     new SequenceB(),
     new Dialogue(new DialogueBox[] {
-      new HeadlessDialogueBox("Unnamed Protagonist", "Huh? Who's there?")
+      new HeadlessDialogueBox("Unnamed Protagonist", "Huh? Who's there?"),
+      new DialogueBox(sprites.orb, "Glowing Orb", ""),
+      new HeadlessDialogueBox("Unnamed Protagonist", "And what exactly are you supposed to be?"),
+      new DialogueBox(sprites.orb, "Glowing Orb", "Only this world's creator."),
+      new HeadlessDialogueBox("Unnamed Protagonist", "The wha--"),
     }),
+    new SequenceB(),
     new EndEvent()
   };
   

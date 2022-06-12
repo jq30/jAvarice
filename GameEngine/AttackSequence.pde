@@ -45,3 +45,7 @@ public class SequenceB extends AttackSequence {
     attacks.add(new SpinnyThing(369, 175));
   }
 }
+
+public class SequenceC extends AttackSequence {
+  
+}
