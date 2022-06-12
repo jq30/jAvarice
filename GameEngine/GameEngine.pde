@@ -17,6 +17,7 @@ BackgroundEngine bgEngine;
 EventManager events;
 int delayedAttackTimer;
 boolean invulnerabilityCheat;
+boolean keyProtection;
 
 enum GameState {
   MENU, PLAY, PAUSED, DIALOGUE, OVER, CHEAT, END

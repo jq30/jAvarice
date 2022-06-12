@@ -25,3 +25,19 @@ public class DialogueBox {
     text(text, xPos + 120, yPos + 40);
   }
 }
+
+public class HeadlessDialogueBox extends DialogueBox {
+  public HeadlessDialogueBox(String header, String text) {
+    super(null, header, text);
+  }
+  
+  public void display() {
+    stroke(0);
+    fill(255);
+    rect(xPos, yPos, boxWidth, boxHeight);
+    noStroke();
+    fill(0);
+    text(header, xPos + 120, yPos + 20);
+    text(text, xPos + 120, yPos + 40);
+  }
+}
