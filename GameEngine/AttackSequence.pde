@@ -42,6 +42,6 @@ public class SequenceB extends AttackSequence {
     attacks.add(new Wait(200));
     attacks.add(new SpinnyThing(259, 253));
     attacks.add(new SpinnyThing(65, 46));
-    attacks.add(new SpinnyThing(269, 175));
+    attacks.add(new SpinnyThing(369, 175));
   }
 }

@@ -37,7 +37,7 @@ public class HeadlessDialogueBox extends DialogueBox {
     rect(xPos, yPos, boxWidth, boxHeight);
     noStroke();
     fill(0);
-    text(header, xPos + 120, yPos + 20);
-    text(text, xPos + 120, yPos + 40);
+    text(header, xPos + 20, yPos + 20);
+    text(text, xPos + 20, yPos + 40);
   }
 }

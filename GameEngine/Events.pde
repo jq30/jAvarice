@@ -9,6 +9,9 @@ public class EventManager {
   Event[] events = {
     new WaitEvent(200),
     new SequenceB(),
+    new Dialogue(new DialogueBox[] {
+      new HeadlessDialogueBox("Unnamed Protagonist", "Huh? Who's there?")
+    }),
     new EndEvent()
   };
   

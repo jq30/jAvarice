@@ -6,4 +6,7 @@ public class GraphicsEngine {
   
   PImage tempBackground = loadImage("ImageLibrary/temp-bg.png");
   PImage tempBackgroundAlt = loadImage("ImageLibrary/temp-bg-reversed.png");
+  
+  PImage orb = loadImage("ImageLibrary/orbicon.png");
+  PImage orbModel = loadImage("ImageLibrary/orbsmaller.png");
 }

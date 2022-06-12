@@ -27,6 +27,6 @@ public class Enemy {
   
   public void display() {
     fill(120);
-    rect(x - 15, y - 30, 30, 60); //placeholder
+    image(sprites.orbModel, x - 30, y - 30);
   }
 }
