@@ -1,5 +1,16 @@
 # jAvarice
 
+This is a bullet hell game inspired by the Touhou Project series by Zun
+
+# Controls
+WASD to move in game
+SHIFT to slow down
+
+UP and DOWN to navigate menus
+Z to select option from menus
+
+ANY KEY to advance dialogue or game over screen
+
 # A commit a day keeps the K away
 Day | Date | Changes | Goals
 --- | --- | --- | ---
@@ -16,5 +27,5 @@ Wed | 6/01/22 | Stages framework or something, get started on background engine 
 Fri | 6/03/22 | Finished background engine |
 Mon | 6/06/22 | Started event manager |
 Tue | 6/07/22 | Finished event manager |
-Wed | 6/08/22 | Cleaning up code |
+Wed | 6/08/22 | Cleaning up code |s
 Sun | 6/12/22 | Finished story |

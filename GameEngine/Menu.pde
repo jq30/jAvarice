@@ -30,7 +30,8 @@ public class MainMenu extends Menu {
   private void init() {
     MenuItem[] mainMenuItems = {
       new StartItem("START", 40, 40),
-      new ExitItem("EXIT", 60, 60)
+      new CheatMenuItem("CHEATS", 40, 60),
+      new ExitItem("EXIT", 40, 80)
     };
     menuItems = mainMenuItems;
   }
@@ -62,14 +63,15 @@ public class PauseMenu extends Menu {
   private void init() {
      MenuItem[] pauseMenuItems = {
       new StartItem("RESUME", 40, 40),
-      new TitleItem("SAVE AND QUIT", 60, 60),
-      new ResetItem("QUIT TO TITLE", 80, 80)
+      new TitleItem("SAVE AND QUIT", 40, 60),
+      new ResetItem("QUIT TO TITLE", 40, 80)
     };
     menuItems = pauseMenuItems;
   }
   
   public void display() {
-    background(255, 200);
+    fill(255, 50);
+    rect(0, 0, width, height);
     fill(0);
     text("PAUSED", 20, 20);
     drawMenuItems();
@@ -84,6 +86,41 @@ public class PauseMenu extends Menu {
       }
       M.display();
     }
+  }
+}
+
+public class CheatMenu extends Menu {
+  public CheatMenu() {
+    init();
+  }
+  
+  private void init() {
+    MenuItem[] cheatMenuItems = {
+      new InvunerabilityItem("INVULNERABILITY", 20, 40),
+      new TitleItem("BACK", 20, 60)
+    };
+    menuItems = cheatMenuItems;
+  }
+  
+  public void display() {
+    background(255);
+    fill(0);
+    text("CHEATS", 20, 20);
+    drawMenuItems();
+  }
+  
+  public void drawMenuItems() {
+    for (MenuItem M : menuItems) {
+      if (M == menuItems[currentItem]) {
+        fill(20, 20, 255);
+      } else {
+        fill(0);
+      }
+      M.display();
+    }
+    
+    fill(0);
+    text(invulnerabilityCheat ? "ON" : "OFF", 175, 40);
   }
 }
 
@@ -119,6 +156,7 @@ public class StartItem extends MenuItem {
   public void execute() {
     keysPressed = new boolean[128];
     state = GameState.PLAY;
+    events.eventQueue.peek().start();
   }
 }
 
@@ -148,6 +186,26 @@ public class ResetItem extends MenuItem {
   }
   
   public void execute() {
-    setup(); //not working atm, will work when everything is placed in setup()
+    setup();
+  }
+}
+
+public class CheatMenuItem extends MenuItem {
+  public CheatMenuItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    state = GameState.CHEAT;
+  }
+}
+
+public class InvunerabilityItem extends MenuItem {
+  public InvunerabilityItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    invulnerabilityCheat = ! invulnerabilityCheat;
   }
 }

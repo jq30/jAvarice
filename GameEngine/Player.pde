@@ -55,6 +55,6 @@ public class Player {
     }
     image(sprite, x - sprite.width / 2, y - sprite.height / 2);
     fill(150, 200, 160);
-    circle(x, y, hitboxRadius * 2); //placeholder
+    circle(x, y, hitboxRadius * 2); //hitbox
   }
 }

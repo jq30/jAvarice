@@ -10,10 +10,6 @@ public class Bullet {
     this.yVel = yVel;
     radius = 5f;
   }
-  
-  public Bullet(float x, float y, float targetX, float targetY, float speed) {
-    this(x, y, speed * (targetX - x) / dist(x, y, targetX, targetY), speed * (targetY - y) / dist(x, y, targetX, targetY));
-  }
 
   public void move() {
     x += xVel;
@@ -31,6 +27,15 @@ public class Bullet {
   
   public boolean offScreen() {
     return x < -5 || y < -5 || x > width + 5 || y > width + 5;
+  }
+}
+
+public class AimedBullet extends Bullet {
+  public AimedBullet(float x, float y, float targetX, float targetY, float speed) {
+    super(x, y,
+      speed * (targetX - x) / dist(x, y, targetX, targetY),
+      speed * (targetY - y) / dist(x, y, targetX, targetY)
+    );
   }
 }
 
