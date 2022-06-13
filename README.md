@@ -1,5 +1,7 @@
 # jAvarice
 
+This is a bullet hell game inspired by the Touhou Project series by Zun
+
 # Controls
 WASD to move in game
 SHIFT to slow down
