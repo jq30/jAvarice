@@ -1,5 +1,14 @@
 # jAvarice
 
+# Controls
+WASD to move in game
+SHIFT to slow down
+
+UP and DOWN to navigate menus
+Z to select option from menus
+
+ANY KEY to advance dialogue or game over screen
+
 # A commit a day keeps the K away
 Day | Date | Changes | Goals
 --- | --- | --- | ---
@@ -11,4 +20,4 @@ Fri | 5/27/22 | Main menu and start menu, also framework for other menus | Dialo
 Fri | 5/27/22 | Partially rewrote how AttackPatterns are coded |
 Sun | 5/29/22 | Added player sprite, reworked AttackPattern, small changes to menus |
 Mon | 5/30/22 | Small changes to various systems. Also dialogue boxes! | Completion of demo branch
-Tue | 5/31/22 | Dialogue boxes, demo branch, begin work on enemy | 
+Tue | 5/31/22 | Dialogue boxes, demo branch, begin work on enemy |
