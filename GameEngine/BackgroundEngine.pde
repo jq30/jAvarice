@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+
+=======
 public class BackgroundEngine {
   Deque<PImage> imageQueue;
   PImage overlay; //nullable
@@ -60,3 +63,4 @@ public class BackgroundEngine {
     imageQueue = new LinkedList<PImage>();
   }
 }
+>>>>>>> main
