@@ -87,6 +87,16 @@ public class PauseMenu extends Menu {
   }
 }
 
+public class CheatMenu extends Menu {
+  public void display() {
+    
+  }
+  
+  public void drawMenuItems() {
+    
+  }
+}
+
 /////
 
 
