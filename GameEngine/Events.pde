@@ -7,6 +7,7 @@ public class EventManager {
   Deque<Event> eventQueue = new LinkedList<Event>();
   
   Event[] events = {
+    new WaitEvent(200),
     new EndEvent()
   };
   
@@ -39,5 +40,12 @@ public class EndEvent implements Event {
   
   public boolean finished() {
     return false;
+  }
+}
+
+public class WaitEvent extends AttackSequence {
+  //is actually just an empty attack under the hood
+  public WaitEvent(int frames) {
+    attacks.add(new Wait(frames));
   }
 }
