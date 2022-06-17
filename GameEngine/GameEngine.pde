@@ -7,7 +7,7 @@ Player player;
 AttackSequence currentSequence;
 Sidebar sidebar;
 int playerHP, invulnerability;
-Menu menu, pausemenu;
+Menu menu, pausemenu, cheatmenu;
 GameState state;
 GraphicsEngine sprites;
 DialogueEngine dialogueEngine;
@@ -16,9 +16,10 @@ Enemy enemy;
 BackgroundEngine bgEngine;
 EventManager events;
 int delayedAttackTimer;
+boolean invulnerabilityCheat;
 
 enum GameState {
-  MENU, PLAY, PAUSED, DIALOGUE, OVER
+  MENU, PLAY, PAUSED, DIALOGUE, OVER, CHEAT
 }
 
 void setup() {
@@ -30,11 +31,13 @@ void setup() {
   invulnerability = 60;
   menu = new MainMenu();
   pausemenu = new PauseMenu();
+  cheatmenu = new CheatMenu();
   state = GameState.MENU;
   dialogueEngine = new DialogueEngine();
   enemy = new Enemy();
   bgEngine = new BackgroundEngine();
   events = new EventManager();
+  invulnerabilityCheat = false;
   
   size(750, 750);
   sidebar = new Sidebar();
@@ -74,7 +77,9 @@ void draw() {
       sidebar.display();
       dialogueEngine.display();
       break;
-      
+    case CHEAT:
+      cheatmenu.display();
+      break;
   }
   text(frameRate, 20, height - 20);
 }
@@ -123,6 +128,17 @@ void keyPressed() {
       } else {
         state = GameState.PLAY; //return to playing mode
       }
+    case CHEAT:
+      if (keyCode == UP) {
+        cheatmenu.prev();
+      }
+      if (keyCode == DOWN) {
+        cheatmenu.next();
+      }
+      if (keyCode == 'Z' || keyCode == ENTER) {
+        cheatmenu.executeCurrent();
+      }
+      break;
     default:
       break;
   }

@@ -89,8 +89,23 @@ public class PauseMenu extends Menu {
 }
 
 public class CheatMenu extends Menu {
+  public CheatMenu() {
+    init();
+  }
+  
+  private void init() {
+    MenuItem[] cheatMenuItems = {
+      new InvunerabilityItem("INVULNERABILITY", 20, 40),
+      new TitleItem("BACK", 20, 60)
+    };
+    menuItems = cheatMenuItems;
+  }
+  
   public void display() {
-    
+    background(255);
+    fill(0);
+    text("CHEATS", 20, 20);
+    drawMenuItems();
   }
   
   public void drawMenuItems() {
@@ -161,5 +176,25 @@ public class ResetItem extends MenuItem {
   
   public void execute() {
     setup();
+  }
+}
+
+public class CheatMenuItem extends MenuItem {
+  public CheatMenuItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    state = GameState.CHEAT;
+  }
+}
+
+public class InvunerabilityItem extends MenuItem {
+  public InvunerabilityItem(String a, float b, float c) {
+    super(a, b, c);
+  }
+  
+  public void execute() {
+    
   }
 }
