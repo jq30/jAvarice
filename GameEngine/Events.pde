@@ -8,6 +8,7 @@ public class EventManager {
   
   Event[] events = {
     new WaitEvent(200),
+    new SequenceB(),
     new EndEvent()
   };
   

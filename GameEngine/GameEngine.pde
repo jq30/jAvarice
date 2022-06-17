@@ -162,6 +162,9 @@ void mouseClicked() {
 }
 
 void triggerHit() {
+  if (invulnerabilityCheat) {
+    return;
+  }
   if (invulnerability == 0) {
     playerHP--;
     invulnerability = 60;
