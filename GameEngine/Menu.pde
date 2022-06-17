@@ -69,7 +69,8 @@ public class PauseMenu extends Menu {
   }
   
   public void display() {
-    background(255, 200);
+    fill(255, 50);
+    rect(0, 0, width, height);
     fill(0);
     text("PAUSED", 20, 20);
     drawMenuItems();
