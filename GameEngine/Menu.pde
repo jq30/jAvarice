@@ -30,7 +30,8 @@ public class MainMenu extends Menu {
   private void init() {
     MenuItem[] mainMenuItems = {
       new StartItem("START", 40, 40),
-      new ExitItem("EXIT", 60, 60)
+      new CheatMenuItem("CHEATS", 40, 60),
+      new ExitItem("EXIT", 40, 80)
     };
     menuItems = mainMenuItems;
   }
@@ -62,8 +63,8 @@ public class PauseMenu extends Menu {
   private void init() {
      MenuItem[] pauseMenuItems = {
       new StartItem("RESUME", 40, 40),
-      new TitleItem("SAVE AND QUIT", 60, 60),
-      new ResetItem("QUIT TO TITLE", 80, 80)
+      new TitleItem("SAVE AND QUIT", 40, 60),
+      new ResetItem("QUIT TO TITLE", 40, 80)
     };
     menuItems = pauseMenuItems;
   }
@@ -109,7 +110,17 @@ public class CheatMenu extends Menu {
   }
   
   public void drawMenuItems() {
+    for (MenuItem M : menuItems) {
+      if (M == menuItems[currentItem]) {
+        fill(20, 20, 255);
+      } else {
+        fill(0);
+      }
+      M.display();
+    }
     
+    fill(0);
+    text(invulnerabilityCheat ? "ON" : "OFF", 175, 40);
   }
 }
 
@@ -195,6 +206,6 @@ public class InvunerabilityItem extends MenuItem {
   }
   
   public void execute() {
-    
+    invulnerabilityCheat = ! invulnerabilityCheat;
   }
 }
